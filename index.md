@@ -1,5 +1,5 @@
 ### Sep 2020
-#### [Fun With React Hooks](/001) :+1:
+#### [Fun With React Hooks](/001)
 #### [Building custom Hooks](/002)
 #### [Debugging Node in VSCode](/003)
 ### Oct 2020
