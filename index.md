@@ -1,7 +1,7 @@
 ### Sep 2020
-#### [Fun With React Hooks](http://github.com) :+1:
-#### [Building custom Hooks](http://github.com)
-#### [Debugging Node in VSCode](http://github.com)
+#### [Fun With React Hooks](/001) :+1:
+#### [Building custom Hooks](/002)
+#### [Debugging Node in VSCode](/003)
 ### Oct 2020
 #### [Mockig axios with redux](http://github.com)
 #### [Testing redux](http://github.com)
