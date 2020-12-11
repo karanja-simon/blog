@@ -1,12 +1,12 @@
 ![hooks](/images/100000.png)
-### [PWA Manifest Generator](/p10001.md)
+### [PWA Manifest Generator](/portfolio/10001)
 ###### May 29, 2018 09:00AM
 ###### [#React](/react) [#Redux](/redux) [#Node.js](/node) [#Antd](/antd)
 Progressive Web App Manifest generator that generates the neccessary web manifest file(s) and respective icons per the 
 specifications to quickly bootstrap your application. Just specify a name and a few other application properties, 
 upload your icon, hit generate and you are done.. Happy coding. 😃😃😃.
 <a href='https://developer.mozilla.org/en-US/docs/Web/Manifest'>https://developer.mozilla.org/en-US/docs/Web/Manifest</a>
-[Read more](/p10001.md)
+[Read more](/portfolio/10001)
 
 [github](https://github.com/simonkiruku/pwa-client)
 [demo](https://skdev.work/apps/pwa)
