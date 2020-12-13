@@ -29,3 +29,15 @@ Unless you fancy the built-in `fetch` API, chances are that you are using or hav
 ###### [#react]() [#Hooks](react-hoos.com)
 We’ve often had to maintain components that started out simple but grew into an unmanageable mess of stateful logic and side effects. Each *lifecycle* method often contains a mix of unrelated logic. For example, components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. However, the same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`. Mutually related code that changes together gets split apart, but completely unrelated code ends up combined in a.
 [Read more](/blog/10004)
+
+### Oct 2020
+---
+## [Lo-fi Beats compilation](/blog/10005)
+###### Some beats to chill to as you code.
+###### [@admin](/whoami)
+###### Oct 10, 2020 9:50PM
+###### [#music]() [#lofi]()
+So, some days back I went looking for the best Low Fidelify sounds aka *Lo-fi* beats. (I am lover of lofi, if can't tell already and do enjoy them especially 
+when coding). Fist, I wanted to know more about their origin and was suprised that they go way back to 50's. I will not bother you will all the history, but 
+here is a nice [entry in Wikipedia](https://en.wikipedia.org/wiki/Lo-fi_music) you can read. I didn't know Lo-fi is a *music quality* in which
+[Read more](/blog/10005)
