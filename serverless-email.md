@@ -1,9 +1,21 @@
 ## Serverless emailing
 ##### *Sending emails with client-side only*
 ###### [@admin](/whoami)
-###### Dec 13, 2020 6:50PM
-###### [#react]() [#emailjs]() [#express]()
+###### Dec 15, 2020 10:13PM
+###### [#react]() [#email]() [#serverless]()
 
-![Passing Tests](/images/blog/10001/10001.png)
+Can you really send an email from Javascript (React) without a backend server? Well, you could.. sort of. In my quest of building a [server-less]() blog, I went looking
+for a mailing solution that didn't require a server setup. What I found was [emailjs](https://www.emailjs.com/).
+##### But how does it work?
+From the official emailjs docs, this is what they say:
+> EmailJS helps sending emails using client side technologies only. No server is required – just connect EmailJS to one of the supported email services, create an email template, > and use our Javascript library to trigger an email.
 
-With a multitude of testing framework available for JavaScript and Node.js in specific, it can quickly become overwhelming. For the seasoned, the choices usually narrows down to [Mocha](https://mochajs.org/) paired
+```js
+const params = {
+name: 'John',
+reply_email: 'john@example.com',
+message: 'This is awesome!'
+};
+emailjs.send( 'gmail', 'feedback', params );
+```
+[Read more](/blog/10002)
