@@ -49,3 +49,14 @@ So, some days back I went looking for the best Low Fidelify sounds aka *Lo-fi* b
 when coding). Fist, I wanted to know more about their origin and was suprised that they go way back to 50's. I will not bother you will all the history, but 
 here is a nice [entry in Wikipedia](https://en.wikipedia.org/wiki/Lo-fi_music) you can read. I didn't know Lo-fi is a *music quality* in which
 [Read more](/blog/10005)
+
+### Very Old
+---
+## [JavaFX Multi-screen Manager](/blog/javafx-multiscreen-framework)
+###### Managing multiple views.
+###### [@admin](/whoami)
+###### Oct 10, 2016 9:50PM
+###### [#java]() [#javafx]()
+Long, long time ago while working with JavaFX, I decided to create a small framework/library to managing multiple screens or views (.fxml files). Here is my effort, 
+and although
+[Read more](/blog/javafx-multiscreen-framework)
