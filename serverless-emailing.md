@@ -26,15 +26,19 @@ emailjs.init("YOUR_USER_ID");
 ```
 `YOUR_USER_ID` will be available on [intergration](https://dashboard.emailjs.com/admin/integration) section on your dashboard.
 Now, sending the email is quite easy. Emailjs provides two ways of sending an email.
+
 > Note: Both method are rate limited at 1 request/sec.
-###### Option 1
-Using
+
+#### Option 1
+
 ```js
 emailjs.send(serviceID, templateID, templateParams, userID);
 ```
 `serviceID` will be assigned when configuring your service and `templateID` when setting up your template on your [admin dashboard](https://dashboard.emailjs.com/admin/).
 `useID` is optional if used `init()`.
+
 Example:
+
 ```js
 const params = {
 name: 'John',
@@ -48,12 +52,16 @@ emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
        console.log('FAILED...', error);
     });
 ```
-###### Option 2
+#### Option 2
+
 This will automatically collect the values of the form and pass them to the specified template.
+
 ```js
 emailjs.sendForm(serviceID, templateID, templateParams, userID);
 ```
+
 Example:
+
 ```js
 import React from 'react';
 import emailjs from 'emailjs-com';
@@ -82,7 +90,10 @@ const ContactMe = () => {
   );
 }
 ```
+
 **The input names on the form should correspond to the names on the template.**
 If everything is setup properly, you should recieve an email from the mail address you provided when setting up your template.
+
+*Happy coding*
 
 
