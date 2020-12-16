@@ -19,7 +19,7 @@ React hooks is a god's sent feature that was introduced in React 16.8. In old da
 ###### Dec 15, 2020 10:13PM
 ###### [#react]() [#email]() [#serverless]()
 Can you really send an email from Javascript (React) without a backend server? Well, you could.. sort of. In my quest of building a [server-less]() blog, I went looking
-for a mailing solution that didn't require a server setup. What I found was [emailjs](https://www.emailjs.com/)
+for a mailing solution that didn't require a server setup. What I found was [emailjs](https://www.emailjs.com/).
 [Read more](/blog/serverless-emailing)
 
 ### Nov 2020
