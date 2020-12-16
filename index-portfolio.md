@@ -7,6 +7,8 @@ specifications to quickly bootstrap your application. Just specify a name and a 
 upload your icon, hit generate and you are done.. Happy coding. 😃😃😃.
 [Read more](/portfolio/pwa-manifest-generator)
 
+---
+
 ![ip_locator](/images/iplocator/01.png)
 ### [IP Locator](/portfolio/ip-locator)
 ###### Jun 18, 2018 06:00PM
@@ -14,6 +16,8 @@ upload your icon, hit generate and you are done.. Happy coding. 😃😃😃.
 An IP location application that pulls your IP location, ISP and other information and displays your real-time location on map.
 This application is developed purely on Angular 6 and uses [Leaflet](https://leafletjs.com/) maps library.
 [Read more](/portfolio/ip-locator)
+
+---
 
 ![movie_ticketer](/images/movieticketer/01.png)
 ### [Movie Ticketer](/portfolio/movie-ticketer)
@@ -23,6 +27,8 @@ A movie ticketing app using Angular. The application lists the available movies 
 The application is not a fully fledged system, but rather a simple POC
 [Read more](/portfolio/movie-ticketer)
 
+---
+
 ![ke-postal-api](/images/kepostalapi/01.png)
 ### [KE Postal API](/portfolio/ke-postal-api)
 ##### Jul 05, 2018 05:22 PM
@@ -30,6 +36,8 @@ The application is not a fully fledged system, but rather a simple POC
 Kenya-Postal-Codes-API API provides a lookup for the Kenya Postal Corporation codes  and addresses. Version 1 of the API is limited to the 
 essentials: listing all postal codes, search by code or name.
 [Read more](/portfolio/ke-postal-api)
+
+---
 
 ![movie-seating](/images/movieseating/01.png)
 ### [Movie Seating](/portfolio/movie-seating)
@@ -39,12 +47,16 @@ A simple React-Redux movie seating and ticket purchase. The application allows m
 It uses a simple use case of a VVIP, VIP and Regular seating and tickets.
 [Read more](/portfolio/movie-seating)
 
+---
+
 ![mpesa_nodejs](/images/nodempesa/01.jpeg)
 ### [Mpesa Node.js](/portfolio/node-mpesa)
 ##### May 16, 2019 09:02 PM
 ###### [#node.js]() [#mpesa]() [#c2b]() [#stkpush]()
 An Mpesa C2B and STK push implementation in NodeJS. This is  a simple consumption of [Mpesa API](https://developer.safaricom.co.ke/docs#authentication) using NodeJS. The implementation wraps the C2B and STK  push.
 [Read more](/portfolio/node-mpesa)
+
+---
 
 ![lyrics](/images/lyricks/01.jpg)
 ### [Mpesa Node.js](/portfolio/lyricks)
@@ -53,6 +65,8 @@ An Mpesa C2B and STK push implementation in NodeJS. This is  a simple consumptio
 A sing along lyrics application built with React. Inspired by the following [codepen](https://codepen.io/z-/pen/MQRGOe). Happy coding & sing along.
 [Read more](/portfolio/lyricks)
 
+---
+
 ![dlp_program_ke](/images/dlp/01.jpg)
 ### [Mpesa Node.js](/portfolio/digital-learning-program)
 ##### Feb 20, 2020 01:02 PM
@@ -60,6 +74,8 @@ A sing along lyrics application built with React. Inspired by the following [cod
 A GraphQL API wrapper for the Kenya Digital Learning Programme coverage API. You can check if your school is currently covered by the program 
 by quering the API (See github below). Learn more about the DLP program [here](http://icta.go.ke/digischool). The Restful API can be found [here](http://www.opendata.go.ke/datasets/186f97cdce59416caea1c2ee63185aa5/data)
 [Read more](/portfolio/digital-learning-program)
+
+---
 
 ![at_otp](/images/atotp/01.jpg)
 ### [Mpesa Node.js](/portfolio/africastalking-otp-api)
