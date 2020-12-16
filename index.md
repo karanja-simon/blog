@@ -53,7 +53,6 @@ here is a nice [entry in Wikipedia](https://en.wikipedia.org/wiki/Lo-fi_music) y
 ### Very Old
 ---
 ## [JavaFX Multi-screen Manager](/blog/javafx-multiscreen-framework)
-###### Managing multiple views.
 ###### [@admin](/whoami)
 ###### Oct 10, 2016 9:50PM
 ###### [#java]() [#javafx]()
