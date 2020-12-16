@@ -1,5 +1,10 @@
-# MultiScreenFramework.
-A clean JavaFX framework for managing multiple screens or views
+## [JavaFX Multi-screen Manager](/blog/javafx-multiscreen-framework)
+###### Managing multiple views.
+###### [@admin](/whoami)
+###### Oct 10, 2016 9:50PM
+###### [#java]() [#javafx]()
+Long, long time ago while working with JavaFX, I decided to create a small framework/library to managing multiple screens or views (.fxml files). Here is my effort, 
+of creating *a clean JavaFX framework for managing multiple screens or views*.
 
 #### Getting Started
 Clone the repo and grab the MultiScreeFramework.jar in the dist directory and import it to your project, then see the installation
