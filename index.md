@@ -1,11 +1,11 @@
 ### Dec 2020
 ---
-#### [Node, Express Testing: Jest + Supertest](/blog/10001)
+#### [Node, Express Testing: Jest + Supertest](/blog/node-express-jest-testing)
 ##### [@admin](/whoami)
 ###### Sep 19, 2020 12:13PM
 ###### [#react]() [#express]() [#jest]() [#supertest]()
 With a multitude of testing framework available for JavaScript and Node.js in specific, it can quickly become overwhelming. For the seasoned, the choices usually narrows down to [Mocha](https://mochajs.org/) paired with assertion library like [Chai](https://www.chaijs.com/). Although Mocha can also be used for testing on the browser side, I have found having a uniform test framework across the Node.js and browser (React) environment to be more rewarding, and there’s no other choice that can rival [Jest](https://jestjs.io/). The beauty of Jest is the out-of-the-box support on React and zero configuration almost elsewhere
-[Read more](/blog/10001)
+[Read more](/blog/node-express-jest-testing.md)
 
 #### [React Hooks I: An In-depth Look](/blog/10002)
 ##### [@admin](/whoami)
