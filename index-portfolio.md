@@ -59,7 +59,7 @@ An Mpesa C2B and STK push implementation in NodeJS. This is  a simple consumptio
 ---
 
 ![lyrics](/images/lyricks/01.jpg)
-### [Mpesa Node.js](/portfolio/lyricks)
+### [Lyricks](/portfolio/lyricks)
 ##### Jun 10, 2019 07:02 AM
 ###### [#react]() [#redux]()
 A sing along lyrics application built with React. Inspired by the following [codepen](https://codepen.io/z-/pen/MQRGOe). Happy coding & sing along.
@@ -68,7 +68,7 @@ A sing along lyrics application built with React. Inspired by the following [cod
 ---
 
 ![dlp_program_ke](/images/dlp/01.jpg)
-### [Mpesa Node.js](/portfolio/digital-learning-program)
+### [DLP Kenya GraphQL API](/portfolio/digital-learning-program)
 ##### Feb 20, 2020 01:02 PM
 ###### [#node.js]() [#graphql]()
 A GraphQL API wrapper for the Kenya Digital Learning Programme coverage API. You can check if your school is currently covered by the program 
@@ -77,8 +77,8 @@ by quering the API (See github below). Learn more about the DLP program [here](h
 
 ---
 
-![at_otp](/images/atotp/01.jpg)
-### [Mpesa Node.js](/portfolio/africastalking-otp-api)
+![at_otp](/images/atotp/01.png)
+### [AfricasTalking OTP API](/portfolio/africastalking-otp-api)
 ##### May 20, 2020 06:02 PM
 ###### [#node.js]() [#express]() [#otplib]() [#sms]()
 One Time Password (OTP) code generation using otplib and [AfricasTalking](https://africastalking.com/) NodeJS SMS SDK. The otplib generates a 4 digit OTP code that is delivered to a client inbox using AfricasTalking SMS services.
