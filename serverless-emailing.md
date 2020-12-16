@@ -35,7 +35,7 @@ Now, sending the email is quite easy. Emailjs provides two ways of sending an em
 emailjs.send(serviceID, templateID, templateParams, userID);
 ```
 `serviceID` will be assigned when configuring your service and `templateID` when setting up your template on your [admin dashboard](https://dashboard.emailjs.com/admin/).
-`useID` is optional if used `init()`.
+`useID` is optional if you used `init()`.
 
 Example:
 
