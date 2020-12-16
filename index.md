@@ -14,13 +14,13 @@ With a multitude of testing framework available for JavaScript and Node.js in sp
 React hooks is a god's sent feature that was introduced in React 16.8. In old days, if your component did not handle any local state, then you would normally write it as a stateless functional component. Simple and elegant. Now the problem came if you decided to introduce state to the said component. You would need to refactor your functional component to a class based component to enjoy the state & the lifecycles. Now with the Hook API, you can easily use state, introduce side effects and so much more. React provides a handful of hooks, but the most widely used are:-
 [Read more](/blog/10002)
 
-#### [Server-less emailing](/blog/server-less-emailing)
+#### [Server-less emailing](/blog/serverless-emailing)
 ##### [@admin](/whoami)
 ###### Dec 15, 2020 10:13PM
 ###### [#react]() [#email]() [#serverless]()
 Can you really send an email from Javascript (React) without a backend server? Well, you could.. sort of. In my quest of building a [server-less]() blog, I went looking
 for a mailing solution that didn't require a server setup. What I found was [emailjs](https://www.emailjs.com/)
-[Read more](/blog/10002)
+[Read more](/blog/serverless-emailing)
 
 ### Nov 2020
 ---
