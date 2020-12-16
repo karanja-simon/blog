@@ -3,24 +3,29 @@
 ###### [@admin](/whoami)
 ###### Oct 10, 2016 9:50PM
 ###### [#java]() [#javafx]()
-Long, long time ago while working with JavaFX, I decided to create a small framework/library to managing multiple screens or views (.fxml files). Here is my effort, 
-of creating *a clean JavaFX framework for managing multiple screens or views*.
+Long, long time ago while working with JavaFX, I decided to create a small framework/library to manage multiple screens or views (.fxml files). Here is my effort.
 
-#### Getting Started
-Clone the repo and grab the MultiScreeFramework.jar in the dist directory and import it to your project, then see the installation
-section on how to use it.
-To contribute, please see the contribution section.
 
 #### Prerequisites
+
 Ensure you have a minimum of Java 8 installed. If you are building from sources, ensure you have the latest JDK or atleast JDK8 and above.
 
+#### Getting Started
+
+Clone the repo and grab the *MultiScreeFramework.jar* in the dist directory and import it to your project.
+
 #### Usage
+
 To use the library, follow the steps carefully. 
 > Please note that only an AnchorPane is fully supported as the wrapper container.
-###### STEP 1
-Add the MultiScreenFramework.jar to your project libraries
-###### STEP 2
-Create class, preferrably a Singleton to hold your screens say Screen.java and define all your screens/views with their corresponding   ids E.g
+
+#### Step 1
+
+Add the *MultiScreenFramework.jar* to your project libraries.
+
+#### Step 2
+
+Create class, preferrably a Singleton to hold your screens say *Screen.java* and define all your screens/views with their corresponding  ids E.g
 	
 ```java
 public class Screens {
@@ -50,8 +55,10 @@ public class Screens {
 
 }
 ```
-###### STEP 3
- Foreach of the screens/views controllers, implement the IScreenController and implement the single method setScreenLoader() E.g
+
+#### Step 3
+
+Foreach of the screens/views controllers, implement the `IScreenController` interface and override the single method `setScreenParent()` E.g
 	
 ```java
 public class Screen_001Controller implements Initializable, IScreenController {
@@ -74,8 +81,11 @@ public class Screen_001Controller implements Initializable, IScreenController {
     
 }
 ```
-###### STEP 3
+
+#### Step 4
+
 In your main screen controller
+
 ```java
 
 public class MainViewController implements Initializable {
@@ -116,8 +126,10 @@ view2Button.setOnAction((ActionEvent event) -> {
 }
 ```
 
-##### Demo
-The framework comes bundled with a sample application. The sample is available on demo folder. Just navigate to MultiScreenFrameworkDemo folder and launch the JavaFXMultiScreenDemo.jar in the dist folder.
+#### Demo
+
+The framework comes bundled with a sample application. The sample is available on demo folder. Just navigate to MultiScreenFrameworkDemo folder and launch the *JavaFXMultiScreenDemo.jar* in the dist folder.
+
 ##### Screenshots
 
 ![shot_001](/shot_001.png)
@@ -131,7 +143,7 @@ The framework comes bundled with a sample application. The sample is available o
 
 ##### Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on the process for submitting pull requests to us.
 
 ##### Versioning
 
