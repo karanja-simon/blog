@@ -1,5 +1,5 @@
 ## Serverless emailing
-##### *Sending emails with client-side only*
+##### *Sending emails with client-side js only*
 ###### [@admin](/whoami)
 ###### Dec 15, 2020 10:13PM
 ###### [#react]() [#email]() [#serverless]()
@@ -18,7 +18,13 @@ Install their official SDK
 ```sh
 yarn add emailjs-com
 ```
+Initialize the SDK
+```ts
+import emailjs from 'emailjs-com';
 
+emailjs.init("YOUR_USER_ID");
+```
+`YOUR_USER_ID` will be available on [intergration](https://dashboard.emailjs.com/admin/integration) section on your dashboard.
 ```js
 const params = {
 name: 'John',
