@@ -4,7 +4,7 @@
 ###### Dec 15, 2020 10:13PM
 ###### [#react]() [#email]() [#serverless]()
 
-Can you really send an email from Javascript (React) without a backend server? Well, you could.. sort of. In my quest of building a [server-less]() blog, I went looking
+Can you really send an email from client-side *only* with Javascript/React without a backend server? Well, you could.. sort of. In my quest of building a [server-less]() blog, I went looking
 for a mailing solution that didn't require a server setup. What I found was [emailjs](https://www.emailjs.com/).
 ##### But how does it work?
 From the official emailjs docs, this is what they say:
