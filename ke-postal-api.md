@@ -13,25 +13,12 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 ***
 
 ## Checklist
-* [Try the API console](http://bitly.com/api500px)
 * Familiarize yourself with API functionality
 * Read the Kenya-Postal-Codes-API [API Terms of Use][]
 * [Register your application][] and get a token
 * Hack away
 
 ***
-
-## Basics
-
-- **[Formats and Terms](https://github.com/500px/api-documentation/blob/master/basics/formats_and_terms.md)**
-- **[API Terms of Use](https://github.com/500px/api-documentation/blob/master/basics/terms_of_use.md)**
-
-
-## Examples (Consuming the API)
-
-- **[Angular](http://500px.github.com/500px-js-sdk)**
-- **[Java](https://github.com/500px/api-documentation/blob/master/examples/iOS/API%20Tutorials.md)**
-
 
 ## Changes
 
@@ -43,13 +30,13 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
 #### Codes Resources
 
-- **[<code>GET</code> codes](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos.md)**
-- **[<code>GET</code> code/:code](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_search.md)**
-- **[<code>GET</code> names/:name](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id.md)**
+- **[`GET` codes]()**
+- **[`GET` code/:code]()**
+- **[`GET` names/:name]()**
 
 ## Authentication
-- **[<code>GET</code> key](https://github.com/500px/api-documentation/blob/master/endpoints/user/GET_users.md)**
-- **[<code>GET</code> verify/key](https://github.com/500px/api-documentation/blob/master/endpoints/user/GET_users_show.md)**
+- **[`GET` key]()**
+- **[`GET` verify/key]()**
 
 
 ## FAQ
@@ -78,7 +65,3 @@ There is no limit.
 [OAuth]: http://oauth.net/core/1.0a/
 [Beginner’s Guide]: http://hueniverse.com/oauth/
 [JSON]: http://json.org
-[quick tutorial]: http://www.webmonkey.com/2010/02/get_started_with_json/
-[Register your application]: http://500px.com/settings/applications
-[API Terms of Use]: https://github.com/500px/api-documentation/blob/master/basics/terms_of_use.md
-[See if the concepts used by the API are familiar to you]: https://github.com/500px/api-documentation#what-do-i-need-to-know-before-i-start-using-the-api
