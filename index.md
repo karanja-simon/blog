@@ -7,12 +7,12 @@
 With a multitude of testing framework available for JavaScript and Node.js in specific, it can quickly become overwhelming. For the seasoned, the choices usually narrows down to [Mocha](https://mochajs.org/) paired with assertion library like [Chai](https://www.chaijs.com/). Although Mocha can also be used for testing on the browser side, I have found having a uniform test framework across the Node.js and browser (React) environment to be more rewarding, and there’s no other choice that can rival [Jest](https://jestjs.io/). The beauty of Jest is the out-of-the-box support on React and zero configuration almost elsewhere
 [Read more](/blog/node-express-jest-testing.md)
 
-#### [React Hooks I: An In-depth Look](/blog/10002)
+#### [React Hooks I: An In-depth Look](/blog/react-hooks-usestate)
 ##### [@admin](/whoami)
 ###### Sep 19, 2020 12:13PM
 ###### [#react]() [#hooks]()
 React hooks is a god's sent feature that was introduced in React 16.8. In old days, if your component did not handle any local state, then you would normally write it as a stateless functional component. Simple and elegant. Now the problem came if you decided to introduce state to the said component. You would need to refactor your functional component to a class based component to enjoy the state & the lifecycles. Now with the Hook API, you can easily use state, introduce side effects and so much more. React provides a handful of hooks, but the most widely used are:-
-[Read more](/blog/10002)
+[Read more](/blog/react-hooks-usestate)
 
 #### [Server-less emailing](/blog/serverless-emailing)
 ##### [@admin](/whoami)
@@ -24,12 +24,12 @@ for a mailing solution that didn't require a server setup. What I found was [ema
 
 ### Nov 2020
 ---
-#### [React Testing: Mocking axios with axios-mock-adapter](/blog/10003)
+#### [React Testing: Mocking axios with axios-mock-adapter](/blog/axios-mocking)
 ##### [@admin](/whoami)
 ###### Nov 30, 2020 11:13PM
 ###### [#react]() [#axios]() [#axios-mock-adapter]()
 Unless you fancy the built-in `fetch` API, chances are that you are using or have used axios as your HTTP client. If so, when writing tests you may need to mock API requests. You could of course use mock functions provided by your test library in this case Jest, but I have found a nifty package called `axios-mock-adapter` to be excellent and natural when testing codes with axios implementation.
-[Read more](/blog/10003)
+[Read more](/blog/axios-mocking)
 
 #### [Node: Testing with Jest](http://github.com)
 ##### [@admin](/about)
@@ -40,7 +40,7 @@ We’ve often had to maintain components that started out simple but grew into a
 
 ### Oct 2020
 ---
-## [Lo-fi Beats compilation](/blog/10005)
+## [Lo-fi Beats compilation](/blog/lo-fi)
 ###### Some beats to chill to as you code.
 ###### [@admin](/whoami)
 ###### Oct 10, 2020 9:50PM
@@ -48,7 +48,7 @@ We’ve often had to maintain components that started out simple but grew into a
 So, some days back I went looking for the best Low Fidelify sounds aka *Lo-fi* beats. (I am lover of lofi, if can't tell already and do enjoy them especially 
 when coding). Fist, I wanted to know more about their origin and was suprised that they go way back to 50's. I will not bother you will all the history, but 
 here is a nice [entry in Wikipedia](https://en.wikipedia.org/wiki/Lo-fi_music) you can read. I didn't know Lo-fi is a *music quality* in which
-[Read more](/blog/10005)
+[Read more](/blog/lo-fi)
 
 ### Very Old
 ---
