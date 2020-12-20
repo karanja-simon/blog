@@ -4,6 +4,6 @@
 ###### Dec 19, 2020 02:50PM
 ###### [#node.js]() [#moleculer]() [#microservices]()
 
-In the [last](/moleculer-microservices-i) series, we covered the basics of microservices and moleculer.
+In the [last](/blog/moleculer-microservices-i) series, we covered the basics of microservices and moleculer.
 
 #### Basic Concepts
