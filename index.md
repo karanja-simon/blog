@@ -1,5 +1,13 @@
 ### Dec 2020
 ---
+
+#### [Microservices with Moleculer: Part II](/blog/moleculer-microservices-ii)
+##### [@admin](/whoami)
+###### Dec 20, 2020 02:13PM
+###### [#nodejs]() [#moleculer]() [#microservices]()
+In the [last] series, we covered the basics of microservices and moleculer. Today 
+[Read more](/blog/moleculer-microservices-ii)
+
 #### [Microservices with Moleculer: Part I](/blog/moleculer-microservices-i)
 ##### [@admin](/whoami)
 ###### Dec 20, 2020 02:13PM
@@ -12,7 +20,7 @@ There are a couple of microservice frameworks available for Node.js platform. Th
 ###### Sep 19, 2020 12:13PM
 ###### [#react]() [#express]() [#jest]() [#supertest]()
 With a multitude of testing framework available for JavaScript and Node.js in specific, it can quickly become overwhelming. For the seasoned, the choices usually narrows down to [Mocha](https://mochajs.org/) paired with assertion library like [Chai](https://www.chaijs.com/). Although Mocha can also be used for testing on the browser side, I have found having a uniform test framework across the Node.js and browser (React) environment to be more rewarding, and there’s no other choice that can rival [Jest](https://jestjs.io/). The beauty of Jest is the out-of-the-box support on React and zero configuration almost elsewhere
-[Read more](/blog/node-express-jest-testing.md)
+[Read more](/blog/node-express-jest-testing)
 
 #### [React Hooks I: An In-depth Look](/blog/react-hooks-usestate)
 ##### [@admin](/whoami)
