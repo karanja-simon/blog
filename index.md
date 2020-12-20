@@ -3,9 +3,9 @@
 
 #### [Microservices with Moleculer: Part II](/blog/moleculer-microservices-ii)
 ##### [@admin](/whoami)
-###### Dec 20, 2020 02:13PM
+###### Dec 23, 2020 10:10AM
 ###### [#nodejs]() [#moleculer]() [#microservices]()
-In the [last] series, we covered the basics of microservices and moleculer. Today 
+In the [last](/blog/moleculer-microservices-i) series, we covered the basics of microservices and moleculer. Today 
 [Read more](/blog/moleculer-microservices-ii)
 
 #### [Microservices with Moleculer: Part I](/blog/moleculer-microservices-i)
