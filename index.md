@@ -15,7 +15,7 @@ In the [last](/blog/moleculer-microservices-i) series, we covered the basics of 
 There are a couple of microservice frameworks available for Node.js platform. The 3 most known would be [Cote](https://cote.com), [Moleculer](https://moleculer) and [Seneca](https://seneca.com). For this part series, I will be exploring [Microservices](https://) in Node.js platform using Moleculer.
 [Read more](/blog/node-express-jest-testing.md)
 
-#### [Node, Express Testing: Jest + Supertest](/blog/moleculer-microservices-i)
+#### [Node, Express Testing: Jest + Supertest](/blog/node-express-jest-testing)
 ##### [@admin](/whoami)
 ###### Sep 19, 2020 12:13PM
 ###### [#react]() [#express]() [#jest]() [#supertest]()
