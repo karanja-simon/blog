@@ -15,7 +15,7 @@ random noise/voices. From [Wikipedia](https://en.wikipedia.org/wiki/Lo-fi_music)
 Mmmh, 😀😀. I see. Now that's settled, let's look at the list that I compiled.
 
 ###### 1. [ChilledCow](https://www.youtube.com/watch?v=5qap5aO4i9A)
-Perhaps, the most popular &amp; known 24/7 lo-fi beats streamer on [Youtube]((https://www.youtube.com/watch?v=5qap5aO4i9A). They have been around since 2005 playing the best of lo-fi there is. They have a wide collection of beats to power your coding sessions. They also on [Soundcloud](https://soundcloud.com/chilledcow) which is better than youtube, as you can play on the background especially when on the move. They are also on Spotify &amp; Apple Music.
+Perhaps, the most popular &amp; known 24/7 lo-fi beats streamer on [Youtube](https://www.youtube.com/watch?v=5qap5aO4i9A). They have been around since 2005 playing the best of lo-fi there is. They have a wide collection of beats to power your coding sessions. They also on [Soundcloud](https://soundcloud.com/chilledcow) which is better than youtube, as you can play on the background especially when on the move. They are also on Spotify &amp; Apple Music.
 They also have another channel [beats to sleep/chill to](https://www.youtube.com/watch?v=DWcJFNfaw9c) for the insomniacs. From their page, this is what they say about it:
 > Welcome to the sleepy lofi hip hop radio. This playlist contains the smoothest lofi hip hop beats, perfect to help you chill or fall asleep 💤
 
