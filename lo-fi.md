@@ -15,11 +15,11 @@ random noise/voices. From [Wikipedia](https://en.wikipedia.org/wiki/Lo-fi_music)
 Mmmh, 😀😀. I see. Now that's settled, let's look at the list that I compiled.
 
 ###### 1. [ChilledCow](https://www.youtube.com/watch?v=5qap5aO4i9A)
-Perhaps, the most popular &amp; known 24/7 lo-fi beats streamer on [Youtube](https://www.youtube.com/watch?v=5qap5aO4i9A). They have been around since 2005 playing the best of lo-fi there is. They have a wide collection of beats to power your coding sessions. They are also on [Soundcloud](https://soundcloud.com/chilledcow) which is better than youtube, as you can play on the background especially when on the move. They are also on Spotify &amp; Apple Music.
-They also have another channel [beats to sleep/chill to](https://www.youtube.com/watch?v=DWcJFNfaw9c) for the insomniacs. From their page, this is what they say about it:
+Perhaps, the most popular &amp; known 24/7 lo-fi beats streamer on [Youtube](https://www.youtube.com/watch?v=5qap5aO4i9A). They have been around since 2005 playing the best of lo-fi there is. They have a wide collection of beats to power your coding sessions. They are also on [Soundcloud](https://soundcloud.com/chilledcow) which is more convinient when on the move. They are also on Spotify &amp; Apple Music.
+They do have another channel [beats to sleep/chill to](https://www.youtube.com/watch?v=DWcJFNfaw9c) for the insomniacs. From their page, this is what they say about it:
 > Welcome to the sleepy lofi hip hop radio. This playlist contains the smoothest lofi hip hop beats, perfect to help you chill or fall asleep 💤
 
 ###### 2. [Chillhop](https://chillhop.com/)
-Like Chilledcow, [Chillhop](https://chillhop.com/) has a 24/7 stream on [Youtube](https://www.youtube.com/watch?v=7NOSDKb0HlU). They are also old-timers, dating back 2013. They are also on [Soundcloud](https://soundcloud.com/chillhopdotcom), [Spotify](https://open.spotify.com/user/chillhopmusic) &amp; [Apple Music](https://music.apple.com/nl/playlist/lofi-hip-hop-beats-music-to-study-relax-to-lo-fi-chill-hop/pl.7f6bab5a94ca460c9692cb424447a7d1).
-They also a [jazzy & lofi hip hop beats](https://www.youtube.com/watch?v=5yx6BWlEVcY) channel.
+Like Chilledcow, [Chillhop](https://chillhop.com/) has a 24/7 stream on [Youtube](https://www.youtube.com/watch?v=7NOSDKb0HlU). They are old-timers too, with accounts on [Soundcloud](https://soundcloud.com/chillhopdotcom), [Spotify](https://open.spotify.com/user/chillhopmusic) &amp; [Apple Music](https://music.apple.com/nl/playlist/lofi-hip-hop-beats-music-to-study-relax-to-lo-fi-chill-hop/pl.7f6bab5a94ca460c9692cb424447a7d1). You can also stream lo-fi beats directly from their [website], and use it on your content with attribution. See thier terms [here](https://chillhop.com/creators/).
+They have a [jazzy & lofi hip hop beats](https://www.youtube.com/watch?v=5yx6BWlEVcY) channel for jaz/zzy audience.
 
