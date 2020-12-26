@@ -23,5 +23,15 @@ They do have another channel [beats to sleep/chill to](https://www.youtube.com/w
 Like Chilledcow, [Chillhop](https://chillhop.com/) has a 24/7 stream on [Youtube](https://www.youtube.com/watch?v=7NOSDKb0HlU). They are old-timers too, with accounts on [Soundcloud](https://soundcloud.com/chillhopdotcom), [Spotify](https://open.spotify.com/user/chillhopmusic) &amp; [Apple Music](https://music.apple.com/nl/playlist/lofi-hip-hop-beats-music-to-study-relax-to-lo-fi-chill-hop/pl.7f6bab5a94ca460c9692cb424447a7d1). You can also stream lo-fi beats directly from their [website](https://chillhop.com/), and use it on your content with attribution. See thier terms [here](https://chillhop.com/creators/).
 They have a [jazzy & lofi hip hop beats](https://www.youtube.com/watch?v=5yx6BWlEVcY) channel for jaz/zzy audience.
 
-###### 3. [Lo-fi Radio](https://play.google.com/store/apps/details?id=com.peakpocketstudios.lofiradio) 
+###### 3. [Joma Tech](https://www.youtube.com/watch?v=bmVKaAV_7-A)
+This is a recent 24/7 lo-fi stream with some decent playlist. Go to [chill lofi beats to code/relax to](https://www.youtube.com/watch?v=bmVKaAV_7-A) to enjoy their selection.
+
+###### 4. [Monstafluff Music](https://www.youtube.com/watch?v=zVqJv_dKUEs)
+Also a recent stream like Joma Tech.  Check them out on their youtube stream [24/7 lofi hip hop radio - beats to relax/study to](https://www.youtube.com/watch?v=bmVKaAV_7-A).
+
+###### 5. [Lo-fi Radio](https://play.google.com/store/apps/details?id=com.peakpocketstudios.lofiradio) 
 This is quite a different one. It's an android app that has a good selection of Lo-fi beats although not as good as the two above. You can download it on the [playstore](https://play.google.com/store/apps/details?id=com.peakpocketstudios.lofiradio).
+
+---
+
+I will be updating the list often, so keep checking. *Cheers* ✌️✌️
