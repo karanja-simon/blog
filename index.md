@@ -1,6 +1,13 @@
 ### Dec 2020
 ---
 
+#### [Loading Testing API's with JMeter](/blog/load-testing-apis-jmeter)
+##### [@admin](/whoami)
+###### Dec 26, 2020 09:30PM
+###### [#api]() [#jmeter]()
+You have developed a shiny API that you are proud of, but you don't know how it will handle real life traffic? This is always a concern for any developer, but you can ease some of these worries by stress testing your API. There are many tools out there for loading testing API's but perhaps the most popular is [Apache's JMeter](https://jmeter.apache.org/)
+[Read more](/blog/load-testing-apis-jmeter)
+
 #### [Microservices with Moleculer: Part II](/blog/moleculer-microservices-ii)
 ##### [@admin](/whoami)
 ###### Dec 23, 2020 10:19AM
