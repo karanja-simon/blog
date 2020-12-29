@@ -34,7 +34,7 @@ We need to add a sampler, in our case a *HTTP Request* sampler to the *Thread Gr
 
 ![Login Request](/images/blog/jmeter/03.png)
 
-We would want to see the server response once we hit send. We do this by adding a listener. So, right click on your *Thread Group* then *Add > Listener > View Results Tree*. If you a ready, you can hit *Run > Start* or click the green button on the toolbar.
+We would want to see the server response once we hit send. We do this by adding a listener. So, right click on your *Thread Group* then *Add > Listener > View Results Tree*. If you are ready, you can hit *Run > Start* or click the green button on the toolbar.
 
 ![View Results](/images/blog/jmeter/05.png)
 
@@ -61,6 +61,29 @@ ${__setProperty(token, ${token})};
 ```
 
 ![Bean Shell](/images/blog/jmeter/09.png)
+
+#### Step 2: Reusing the API token
+
+Create a new *Thread Group*, Add a *HTTP Request*, followed by a *View Results Sampler*. We will need to configure our API token since we are now on a private resource. Right click on your *HTTP Request* then *Add > Config Element > HTTP Header Manager*. On the bottom of the window click add and input as follows:-
+
+![Header manager](/images/blog/jmeter/10.png)
+
+Of importance here is:
+
+```sh
+${__property(token)}
+```
+This is how we extract the token we had earlier set on the *Login Thread Group*. Running this on my setup, I get the expected data from the API:-
+
+![API Data](/images/blog/jmeter/12.png)
+
+#### Step 3: Stressing the API
+
+Now that everything is configured and working, let's stress load our API. Let's add another listener. Right click on the *Thread Group* then *Add > Listener > View Resilts in Table*. This will allow us to see our API metrics like Sample Time, Latency etc. We now add more threads count to our *Thread Group*. Click on the *Thread Group* and add the desired *Number of Threads(users)*. I will start with 50 for my case. Hitting run again:-
+
+![Results](/images/blog/jmeter/13.png)
+
+You can keep adjusting the thread count to see how your API behaves. In the next section, we will see how we can interprete the results
 
 
 
