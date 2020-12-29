@@ -64,7 +64,7 @@ ${__setProperty(token, ${token})};
 
 #### Step 2: Reusing the API token
 
-Create a new *Thread Group*, Add a *HTTP Request*, followed by a *View Results Sampler*. We will need to configure our API token since we are now on a private resource. Right click on your *HTTP Request* then *Add > Config Element > HTTP Header Manager*. On the bottom of the window click add and input as follows:-
+Create a new *Thread Group*, Add a *HTTP Request*, followed by a *View Results Sampler*. We will need to configure our API token since we are now on a private resource. Right click on your *HTTP Request* then *Add > Config Element > HTTP Header Manager*. On the bottom of the window click add &amp; input as follows:-
 
 ![Header manager](/images/blog/jmeter/10.png)
 
