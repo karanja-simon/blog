@@ -40,15 +40,15 @@ We would want to see the server response once we hit send. We do this by adding 
 
 If everything was set right, you should see the response on *View Results Tree*. I have the *auth token* which I can use to make API requests.
 
-####### Globalizing our API access token
+##### Globalizing our API access token
 
 Now that we have the token, we need a way of sharing it with the other threads that we will create shortly. First, let's extract the token from the response. We will a *Post Processor* to that, specifically the *JSON Extractor* post processor. Right click on your *HTTP Request*, mine is *Login Request* then *Add > Post Processor > JSON Extractor*. Fill it like so:-
 
-![JSON Extractor](/images/blog/jmeter/06)
+![JSON Extractor](/images/blog/jmeter/06.png)
 
 While at it, let's add a *Debug Sample* to see what's happening under the hood. Right click on your *Thread Group* the *Add > Sampler > Debug Sampler*
 
-![Debug](/images/blog/jmeter/07)
+![Debug](/images/blog/jmeter/07.png)
 
 Hit run, and check *View Result Tree* on *Debug Sampler*, you should see the extracted token.
 
