@@ -83,7 +83,8 @@ Now that everything is configured and working, let's stress load our API. Let's 
 
 ![Results](/images/blog/jmeter/13.png)
 
-You can keep adjusting the thread count to see how your API behaves. In the next section, we will see how we can interprete the results
+You can keep adjusting the thread count to see how your API behaves **But read the note below**. In the next section, we will see how we can interprete the results &amp; and make informed decisions. 
+> Note: If you rump-up the *Number of threads* to a huge number, you will get out of memory &amp; with a nasty *OutOfMemoryError*. The JMeter GUI mode is not recommeded for running load tests. Rather it's a good tool for configuring and debugging tests. On the next section will see how we can avoid this by command-linr tools.
 
 
 
