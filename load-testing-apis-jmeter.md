@@ -26,7 +26,7 @@ We will create 3 *Thread Groups* each correspoding to the actions above. The fir
 ##### Step 1: Acquiring the API access token
 
 > If your API has no Auth flow, you can skip this section.
-Let's deal with aquiring a token so we can consume our API. Our Fuel API provides a login interface on the */api/login* resource. All that is required is a valid email and a password and in return, we get ourselves an access token. On JMeter interface, right click on your test plan and *Add > Threads(Users) > Thread Group*. I will call this *Login Thread Group*. Leave everything as default.
+Let's deal with aquiring a token so we can consume our API. Our Fuel API provides a login interface on the */api/login* resource. All that is required is a valid email and a password and in return, we get ourselves an access token. On JMeter interface, right click on your test plan and *Add > Threads(Users) > Thread Group*. I will call this *Login Thread Group*. Leave everything else as default.
 
 ![Login Thread Group](/images/blog/jmeter/02.png)
 
