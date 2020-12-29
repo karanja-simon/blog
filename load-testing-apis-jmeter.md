@@ -26,8 +26,21 @@ We will create 3 *Thread Groups* each correspoding to the actions above. The fir
 ##### Step 1: Acquiring API token
 
 > If your API has no Auth flow, you can skip this section.
-Let's deal with aquiring a token so we can consume our API. Our Fuel API provides a login interface on the */api/login* resource. All that is required is a valid email and a password and in return, we get ourselves an access token. On JMeter interface, right click on your test plan and add a *Thread Group*. I will call this *Login Thread Group*. Leave everything as default.
+Let's deal with aquiring a token so we can consume our API. Our Fuel API provides a login interface on the */api/login* resource. All that is required is a valid email and a password and in return, we get ourselves an access token. On JMeter interface, right click on your test plan and *Add > Threads(Users) > Thread Group*. I will call this *Login Thread Group*. Leave everything as default.
+
 ![Login Thread Group](/images/blog/jmeter/02.png)
+
+We need to add a sampler, in our case a *HTTP Request* to the *Thread Group* we just created. Right click on your *Thread Group* Then *Add > Sampler > HTTP Request*. I will name mine *Login Request*. Here you need to configure your server IP &amp; API path.
+
+![Login Request](/images/blog/jmeter/03.png)
+
+We would want to see the server response once we hit send. We do this by adding a listener. So, right click on your *Thread Group* then *Add > Listener > View Results Tree*. If you a ready, you can hit *Run > Start* or click the green button on the toolbar.
+
+![View Results](/images/blog/jmeter/05.png)
+
+If everything was set right, you should see the response on *View Results Tree*. I have the *auth token* which I can use to make API requests.
+
+
 
 
 
