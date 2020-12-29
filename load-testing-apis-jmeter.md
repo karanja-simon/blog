@@ -23,14 +23,14 @@ We will start by creating a test plan. By default when you launch JMeter, it wil
 
 We will create 3 *Thread Groups* each correspoding to the actions above. The first *Thread Group* will be tasked with login &amp; setting the *auth token* globally so the other threads can use it. Here the *Number of Threads/users* will be just one since all we need is just the token. The second &amp; third *Thread Group* is where the all action will be. We will crank-up the *Number of Threads/users* to simulate a real world usage.
 
-##### Step 1: Acquiring API token
+##### Step 1: Acquiring the API access token
 
 > If your API has no Auth flow, you can skip this section.
 Let's deal with aquiring a token so we can consume our API. Our Fuel API provides a login interface on the */api/login* resource. All that is required is a valid email and a password and in return, we get ourselves an access token. On JMeter interface, right click on your test plan and *Add > Threads(Users) > Thread Group*. I will call this *Login Thread Group*. Leave everything as default.
 
 ![Login Thread Group](/images/blog/jmeter/02.png)
 
-We need to add a sampler, in our case a *HTTP Request* to the *Thread Group* we just created. Right click on your *Thread Group* Then *Add > Sampler > HTTP Request*. I will name mine *Login Request*. Here you need to configure your server IP &amp; API path.
+We need to add a sampler, in our case a *HTTP Request* sampler to the *Thread Group* we just created. Right click on your *Thread Group* Then *Add > Sampler > HTTP Request*. I will call mine *Login Request*. Here you need to configure your server IP &amp; your API login resource.
 
 ![Login Request](/images/blog/jmeter/03.png)
 
@@ -39,6 +39,31 @@ We would want to see the server response once we hit send. We do this by adding 
 ![View Results](/images/blog/jmeter/05.png)
 
 If everything was set right, you should see the response on *View Results Tree*. I have the *auth token* which I can use to make API requests.
+
+####### Globalizing our API access token
+
+Now that we have the token, we need a way of sharing it with the other threads that we will create shortly. First, let's extract the token from the response. We will a *Post Processor* to that, specifically the *JSON Extractor* post processor. Right click on your *HTTP Request*, mine is *Login Request* then *Add > Post Processor > JSON Extractor*. Fill it like so:-
+
+![JSON Extractor](/images/blog/jmeter/06)
+
+While at it, let's add a *Debug Sample* to see what's happening under the hood. Right click on your *Thread Group* the *Add > Sampler > Debug Sampler*
+
+![Debug](/images/blog/jmeter/07)
+
+Hit run, and check *View Result Tree* on *Debug Sampler*, you should see the extracted token.
+
+![Debug Sampler](/images/blog/jmeter/08.png)
+
+Now, we need to set this token as a global. We will use *Assertion* and specifically, *Bean Shell Assertion*. Right click on your *Thread Group* and *Add > Assertion > BeanShell*. Add the following:-
+
+```sh
+${__setProperty(token, ${token})};
+```
+
+![Bean Shell](/images/blog/jmeter/09.png)
+
+
+
 
 
 
