@@ -121,6 +121,11 @@ You can keep adjusting the thread count to see how your API behaves **But read t
 
 Next -> [Load Testing APIs with JMeter: CMD Tools](/blog/load-testing-apis-jmeter-cmd)
 
+##### References
+---
+1. [https://octoperf.com/blog/2018/04/23/jmeter-rest-api-testing/](https://octoperf.com/blog/2018/04/23/jmeter-rest-api-testing/)
+2. [https://www.blazemeter.com/blog/how-get-started-jmeter-installation-test-plans](https://www.blazemeter.com/blog/how-get-started-jmeter-installation-test-plans)
+
 
 
 
