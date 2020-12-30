@@ -21,6 +21,7 @@ POST | /api/v1/login
 GET | /api/v1/prices
 GET | /api/v1/prices/annual
 
+
 We will start by creating a test plan. By default when you launch JMeter, it will create a test case that you can rename or leave it as is. For my case I will call it *Fuel API Test Plan*.
 
 ##### The plan
@@ -34,7 +35,9 @@ We will create 3 *Thread Groups* each correspoding to the actions above. The fir
 > If your API has no Auth flow, you can skip this section.
 Let's deal with aquiring a token so we can consume our API. Our Fuel API provides a login interface on the */api/login* resource. All that is required is a valid email and a password and in return, we get ourselves an access token. On JMeter interface, right click on your test plan and *Add > Threads(Users) > Thread Group*. I will call this *Login Thread Group*. Leave everything else as default.
 
-![Login Thread Group](/images/blog/jmeter/02.png)
+| ![Login Thread Group](/images/blog/jmeter/02.png) | 
+|:--:| 
+| *The Login Thread Group* |
 
 We need to add a sampler, in our case a *HTTP Request* sampler to the *Thread Group* we just created. Right click on your *Thread Group* Then *Add > Sampler > HTTP Request*. I will call mine *Login Request*. Here you need to configure your server IP &amp; your API login resource.
 
