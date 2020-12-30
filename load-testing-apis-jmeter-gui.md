@@ -27,6 +27,8 @@ We will start by creating a test plan. By default when you launch JMeter, it wil
 
 We will create 3 *Thread Groups* each correspoding to the actions above. The first *Thread Group* will be tasked with login &amp; setting the *auth token* globally so the other threads can use it. Here the *Number of Threads/users* will be just one since all we need is just the token. The second &amp; third *Thread Group* is where the all action will be. We will crank-up the *Number of Threads/users* to simulate a real world usage.
 
+> Note: It's highly discouraged to use JMeter GUI mode for load testing. For the sake of this walkthrough we will use it sparingly to do some load tests. On the [next](/blog/load-testing-apis-jmeter-cmd) article, we will look at JMeter command-line tools for load stressing our API. Keep tuned.
+
 ##### Step 1: Acquiring the API access token
 
 > If your API has no Auth flow, you can skip this section.
@@ -88,9 +90,11 @@ Now that everything is configured and working, let's stress load our API. Let's 
 ![Results](/images/blog/jmeter/13.png)
 
 You can keep adjusting the thread count to see how your API behaves **But read the note below**. In the next section, we will see how we can interprete the results &amp; and make informed decisions. 
-> Note: If you rump-up the *Number of threads* to a huge number, you will get out of memory &amp; with a nasty *OutOfMemoryError*. The JMeter GUI mode is not recommeded for running load tests. Rather it's a good tool for configuring and debugging tests. On the next section will see how we can avoid this by command-linr tools.
 
+> Note: If you rump-up the *Number of threads* to a huge number, you will run into memory issues, with a nasty *OutOfMemoryError*. The JMeter GUI mode is not recommeded for running load tests. Rather it's meant for configuring and debugging tests. On the next section will see how we can avoid this by using 
+JMeter command-line tools.
 
+Next > [Load Testing APIs with JMeter: CMD Tools](/blog/load-testing-apis-jmeter-cmd)
 
 
 
