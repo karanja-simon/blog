@@ -31,5 +31,15 @@ source ~/.bashrc
 
 #### Running Tests
 
-Remember when using the JMeter GUI mode, you saved your test plan (*jmx*) somewhere in your file system? We will need to pass this file as one of the JMeter console arguments.
+Remember when using the JMeter GUI mode, you saved your test plan (*jmx*) somewhere in your file system? We will need to pass this file as one of the JMeter console arguments. But first, let's see how we execute the commands.
+
+ ```sh
+ jmeter -n -t path_to_.jmx -l path_to_.jtl
+ ```
+ 
+Where:-
+* -n  [This specifies JMeter is to run in non-gui mode]
+* -t  [name of JMX file that contains the Test Plan]
+* -l  [name of JTL file to log sample results to]
+* -j  [name of JMeter run log file].
  
