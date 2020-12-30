@@ -103,7 +103,7 @@ This is how we extract the token we had earlier set on the *Login Thread Group*.
 
 #### Step 3: Stressing the API
 
-Now that everything is configured and working, let's stress load our API. Let's add another listener. Right click on the *Thread Group* then *Add > Listener > View Resilts in Table*. This will allow us to see our API metrics like Sample Time, Latency etc. We now add more threads count to our *Thread Group*. Click on the *Thread Group* and add the desired *Number of Threads(users)*. I will start with 50 for my case. 
+Now that everything is configured and working, let's stress load our API. Let's add another listener. Right click on the *Thread Group* then *Add > Listener > View Resilts in Table*. This will allow us to see our API metrics like Sample Time, Latency etc. Remember to add to add a .csv file path where the results will be dumped. We now add more threads count to our *Thread Group*. Click on the *Thread Group* and add the desired *Number of Threads(users)*. I will start with 50 for my case. 
 
 | ![Results](/images/blog/jmeter/12.png) | 
 |:--:| 
