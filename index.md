@@ -1,12 +1,19 @@
 ### Dec 2020
 ---
 
-#### [Loading Testing API's with JMeter](/blog/load-testing-apis-jmeter)
+#### [Loading Testing API's with JMeter: CMD Tools](/blog/load-testing-apis-jmeter-cmd)
+##### [@admin](/whoami)
+###### Dec 30, 2020 11:50AM
+###### [#api]() [#jmeter]()
+On the [previous](/blog/load-testing-apis-jmeter-gui) article, we saw how to setup JMeter with GUI mode. Although the GUI mode is a poweful tool for configuring and debugging your tests, it's a poor choice when it comes to load testing. On this entry, we will look at how we can use the command-line tools to stress our API, and then use the JMeter GUI mode to interprete the results.
+[Read more](/blog/load-testing-apis-jmeter-cmd)
+
+#### [Loading Testing API's with JMeter: GUI](/blog/load-testing-apis-jmeter-gui)
 ##### [@admin](/whoami)
 ###### Dec 26, 2020 09:30PM
 ###### [#api]() [#jmeter]()
 You have developed a shiny API that you are proud of, but you don't know how it will handle real life traffic? This is always a concern for any developer, but you can ease some of these worries by stress testing your API. There are many tools out there for loading testing API's but perhaps the most popular is [Apache's JMeter](https://jmeter.apache.org/)
-[Read more](/blog/load-testing-apis-jmeter)
+[Read more](/blog/load-testing-apis-jmeter-gui)
 
 #### [Microservices with Moleculer: Part II](/blog/moleculer-microservices-ii)
 ##### [@admin](/whoami)
