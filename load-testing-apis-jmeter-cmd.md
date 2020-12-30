@@ -29,4 +29,7 @@ To apply the effect on the current shell:-
 source ~/.bashrc
 ```
 
+#### Running Tests
+
+Remember when using the JMeter GUI mode, you saved your test plan (*jmx*) somewhere in your file system? We will need to pass this file as one of the JMeter console arguments.
  
