@@ -51,7 +51,7 @@ If everything was set right, you should see the response on *View Results Tree*.
 
 ##### Globalizing our API access token
 
-Now that we have the token, we need a way of sharing it with the other threads that we will create shortly. First, let's extract the token from the response. We will a *Post Processor* to that, specifically the *JSON Extractor* post processor. Right click on your *HTTP Request*, mine is *Login Request* then *Add > Post Processor > JSON Extractor*. Fill it like so:-
+Now that we have the token, we need a way of sharing it with the other threads that we will create shortly. First, let's extract the token from the response. We will need a *Post Processor* for this, specifically the *JSON Extractor* post processor. Right click on your *HTTP Request*, mine is *Login Request* then *Add > Post Processor > JSON Extractor*. Fill it like so:-
 
 ![JSON Extractor](/images/blog/jmeter/06.png)
 
