@@ -9,11 +9,11 @@ You have developed a shiny API that you are proud of, but you don't know how it 
 
 JMeter can be used to test performance on both static &amp; dynamic resources, by simulating heavy load on the material server/resource. 
 
-##### Setting up JMeter
+#### 1.0 Setting up JMeter
 
 Head over to [download](https://jmeter.apache.org/download_jmeter.cgi) section of JMeter &amp; download it. You will need to have Java 8+ installed to run the latest version. Uncompress and launch the JMeter.
 
-##### Preparations
+#### 2.0 Preparations
 
 For this walk-through, I will be using a simple API living on the test machine. This is how the API resource structure looks:-
 
@@ -23,7 +23,7 @@ POST | /api/v1/login
 GET | /api/v1/prices
 GET | /api/v1/prices/annual
 
-##### The plan
+#### 3.0 The plan
 
 We will start by creating a test plan. By default when you launch JMeter, it will create a test case that you can rename or leave it as is. For my case I will call it *Fuel API Test Plan*.
 
@@ -31,7 +31,7 @@ We will create 3 *Thread Groups* each correspoding to the actions above. The fir
 
 > Note: It's highly discouraged to use JMeter GUI mode for load testing. For the sake of this walkthrough we will use it sparingly to do some load tests. On the [next](/blog/load-testing-apis-jmeter-cmd) article, we will look at JMeter command-line tools for load stressing our API. Keep tuned.
 
-#### 1.0 Acquiring the API access token
+##### 3.1 Acquiring the API access token
 
 > If your API has no Auth flow, you can skip this section.
 Let's deal with aquiring a token so we can consume our API. Our Fuel API provides a login interface on the */api/login* resource. All that is required is a valid email and a password and in return, we get ourselves an access token. On JMeter interface, right click on your test plan and *Add > Threads(Users) > Thread Group*. I will call this *Login Thread Group*. Leave everything else as default.
@@ -54,7 +54,7 @@ We would want to see the server response once we hit send. We do this by adding 
 
 If everything was set right, you should see the response on *View Results Tree*. I have the *auth token* which I can use to make API requests.
 
-##### 1.1 Sharing our API access token
+##### 3.2 Sharing our API access token
 
 Now that we have the token, we need a way of sharing it with the other threads that we will create shortly. First, let's extract the token from the response. We will need a *Post Processor* for this, specifically the *JSON Extractor* post processor. Right click on your *HTTP Request*, mine is *Login Request* then *Add > Post Processor > JSON Extractor*. Fill it like so:-
 
@@ -84,7 +84,7 @@ ${__setProperty(token, ${token})};
 |:--:| 
 | *BeanShell Assertion* |
 
-#### 2.0 Reusing the API token
+##### 3.3 Reusing the API token
 
 Create a new *Thread Group*, Add a *HTTP Request*. This will correspond to the `/api/v1/prices` route which requires authentication. Add a *View Results Sampler*. We will need to configure our API token since we are now on a private resource. Right click on your *HTTP Request* then *Add > Config Element > HTTP Header Manager*. On the bottom of the window click add &amp; input as follows:-
 
@@ -103,7 +103,7 @@ This is how we extract the token we had earlier set on the *Login Thread Group*.
 |:--:| 
 | *API Results* |
 
-#### 3.0 Stressing the API
+##### 3.4 Stressing the API
 
 Now that everything is configured and working, let's stress load our API. Let's add another listener. Right click on the *Thread Group* then *Add > Listener > View Resilts in Table*. This will allow us to see our API metrics like Sample Time, Latency etc. Remember to add to add a .csv file path where the results will be dumped. We now add more threads count to our *Thread Group*. Click on the *Thread Group* and add the desired *Number of Threads(users)*. I will start with 50 for my case. 
 
