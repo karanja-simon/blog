@@ -91,10 +91,11 @@ Thank you for getting here. Hope you have learned something today. Cheers!
 
 ### Footnotes
 ---
-This is no means a complete look at JMeter capabilities, infact it's just one of many capabilities of the JMeter. If you need to learn more, just follow the links provided below.
+##### 1.0 Disclaimer
+I am no authority on JMeter testing, nor is this a complete look at JMeter capabilities infact it's just one of many capabilities of the JMeter. If you need to learn more about JMeter, please follow the links provided below as they do a great deal of covering JMeter.
 
-#### References
----
+##### 1.1 References
+
 1. [http://www.testingjournals.com/what-is-throughput-in-apache-jmeter/](http://www.testingjournals.com/what-is-throughput-in-apache-jmeter/)
 2. [http://www.testingjournals.com/understand-aggregate-report-jmeter/](http://www.testingjournals.com/understand-aggregate-report-jmeter/)
 3. [https://www.vinsguru.com/jmeter-understanding-aggregate-summary-reports-results/](https://www.vinsguru.com/jmeter-understanding-aggregate-summary-reports-results/)
