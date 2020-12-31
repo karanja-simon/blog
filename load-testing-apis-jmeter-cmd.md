@@ -38,8 +38,21 @@ Remember when using the JMeter GUI mode, you saved your test plan (*jmx*) somewh
  ```
  
 Where:-
-* -n  [This specifies JMeter is to run in non-gui mode]
-* -t  [name of JMX file that contains the Test Plan]
-* -l  [name of JTL file to log sample results to]
-* -j  [name of JMeter run log file].
+* -n  Specifies JMeter is to run in non-gui mode
+* -t  Name of JMX file that contains the Test Plan
+* -l  Name of JTL/CSV/XML file to log sample results to
+* -j  Name of JMeter run log file
+
+Since we are no longer running on GUI mode, edit your *.jmx* and remove all the GUI related stuff. The easiest way is to to load your *.jmx* on the JMeter GUI &amp; delete all the listeners we had added previously. Now, let's run our tests. Launch your command terminal and point it to the directory where your test plan lives and execute the JMeter command.
+
+```sh
+jmeter -n -t fuel-api-cmd.jmx -l fuel-api-results.jtl
+```
+ This will take a couple of minutes depedending on the number of threads/users you specified. In my case I have 5000 threads on `/api/v1/prices` on route.
+
+#### References
+---
+1. [http://www.testingjournals.com/what-is-throughput-in-apache-jmeter/](http://www.testingjournals.com/what-is-throughput-in-apache-jmeter/)
+2. [http://www.testingjournals.com/understand-aggregate-report-jmeter/](http://www.testingjournals.com/understand-aggregate-report-jmeter/)
+3. [https://www.vinsguru.com/jmeter-understanding-aggregate-summary-reports-results/](https://www.vinsguru.com/jmeter-understanding-aggregate-summary-reports-results/)
  
