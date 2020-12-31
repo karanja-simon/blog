@@ -55,6 +55,12 @@ This will take a couple of minutes depedending on the number of threads/users yo
 For this walk-through, I will use the JMeter *Aggregate Report*.
 Launch the JMeter GUI, right click on the default *Test Plan > Add > Listener > Aggregate Report*. This will take sometime depending on the number of threads/users you have configured. 
 
+
+| ![Reaults](/images/blog/jmeter/results.png) | 
+|:--:| 
+| *Test run results* |
+
+
 Now, how do I make sense of this data? I will try to explain the results, but have a look at the links provided on the footnotes to better understand the numbers. I will just cover the basics, with the hope that you will read more from the links provided below.
 
 **Label**: It is the name/URL for the specific HTTP(s) Request. In our case we just have 2 correspoding to `/api/v1/login` and `/api/v1/prices`.
@@ -81,6 +87,11 @@ Now, how do I make sense of this data? I will try to explain the results, but ha
 
 **Median**: It is the time in the middle of a set of samples result. It indicates that 50% of the samples took no more than this time i.e the remainder took at least as long.
 
+Thank you for getting here. Hope you have learned something today. Cheers!
+
+### Footnotes
+---
+This is no means a complete look at JMeter capabilities, infact it's just one of many capabilities of the JMeter. If you need to learn more, just follow the links provided below.
 
 #### References
 ---
