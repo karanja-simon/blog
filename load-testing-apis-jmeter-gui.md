@@ -9,9 +9,11 @@ You have developed a shiny API that you are proud of, but you don't know how it 
 
 JMeter can be used to test performance on both static &amp; dynamic resources, by simulating heavy load on the material server/resource. 
 
----
+##### Setting up JMeter
 
 Head over to [download](https://jmeter.apache.org/download_jmeter.cgi) section of JMeter &amp; download it. You will need to have Java 8+ installed to run the latest version. Uncompress and launch the JMeter.
+
+##### Preparations
 
 For this walk-through, I will be using a simple API living on the test machine. This is how the API resource structure looks:-
 
@@ -21,9 +23,9 @@ POST | /api/v1/login
 GET | /api/v1/prices
 GET | /api/v1/prices/annual
 
-We will start by creating a test plan. By default when you launch JMeter, it will create a test case that you can rename or leave it as is. For my case I will call it *Fuel API Test Plan*.
-
 ##### The plan
+
+We will start by creating a test plan. By default when you launch JMeter, it will create a test case that you can rename or leave it as is. For my case I will call it *Fuel API Test Plan*.
 
 We will create 3 *Thread Groups* each correspoding to the actions above. The first *Thread Group* will be tasked with login &amp; setting the *auth token* globally so the other threads can use it. Here the *Number of Threads/users* will be just one since all we need is just the token. The second &amp; third *Thread Group* is where the all action will be. We will crank-up the *Number of Threads/users* to simulate a real world usage.
 
