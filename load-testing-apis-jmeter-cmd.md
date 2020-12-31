@@ -1,4 +1,4 @@
-## Load Testing API's with JMeter: CMD Tools
+## Load Testing API's with JMeter: CMD Tools &amp; Results Interpretation
 ##### *JMeter CMD Tools &amp; Interpreting the results*
 ###### [@admin](/whoami)
 ###### Dec 30, 2020 11:50AM
@@ -48,11 +48,38 @@ Since we are no longer running on GUI mode, edit your *.jmx* and remove all the 
 ```sh
 jmeter -n -t fuel-api-cmd.jmx -l fuel-api-results.jtl
 ```
-This will take a couple of minutes depedending on the number of threads/users you specified. In my case I have 5000 threads on `/api/v1/prices` on route. After the run is complete, it will generate a *.jtl* file. We will need this file for the next section.
+This will take a couple of minutes depedending on the number of threads/users you specified. In my case I have 6000 threads on `/api/v1/prices` on route. After the run is complete, it will generate a *.jtl* file. We will need this file for the next section.
 
 #### Interpreting the results
 
-Launch the JMeter GUI 
+For this walk-through, I will use the JMeter *Aggregate Report*.
+Launch the JMeter GUI, right click on the default *Test Plan > Add > Listener > Aggregate Report*. This will take sometime depending on the number of threads/users you have configured. 
+
+Now, how do I make sense of this data? I will try to explain the results, but have a look at the links provided on the footnotes to better understand the numbers. I will just cover the basics, with the hope that you will read more from the links provided below.
+
+**Label**: It is the name/URL for the specific HTTP(s) Request. In our case we just have 2 correspoding to `/api/v1/login` and `/api/v1/prices`.
+
+**Samples**: This indicates the number of virtual users/threads per request.
+
+**Average**: It is the average time taken by all the samples to execute specific label. In our case, average time for *Prices Request* is 41164 milliseconds & total average time is 44175 milliseconds.
+
+**Min**: The shortest time taken by a sample for specific label. Out of 6000 samples sent for *Prices Request*, the shortest response time one of the sample had was 90 milliseconds.
+
+**Max**: The longest time taken by a sample for specific label. Out of 6000 samples sent for *Prices Request*, the longest response time one of the sample had was 110285 milliseconds.
+
+**Error%**: Percentage of Failed requests per Label.
+
+**Throughput**: Throughput is the number of request that are processed per time unit(seconds, minutes, hours) by the server. This time is calculated from the start of first sample to the end of the last sample. Larger throughput is better.
+
+**KB/Sec**: This indicates the amount of data downloaded from server during the performance test execution. In short, it is the Throughput measured in Kilobytes per second.
+
+**90% Line**: 90% of the samples took no more than this time. The remaining samples took at least as long as this. (90th percentile)
+
+**95% Line**: 95% of the samples took no more than this time. The remaining samples took at least as long as this. (95th percentile)
+
+**99% Line**: 99% of the samples took no more than this time. The remaining samples took at least as long as this. (99th percentile)
+
+**Median**: It is the time in the middle of a set of samples result. It indicates that 50% of the samples took no more than this time i.e the remainder took at least as long.
 
 
 #### References
