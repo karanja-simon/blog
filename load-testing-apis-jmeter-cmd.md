@@ -48,12 +48,12 @@ Since we are no longer running on GUI mode, edit your *.jmx* and remove all the 
 ```sh
 jmeter -n -t fuel-api-cmd.jmx -l fuel-api-results.jtl
 ```
-This will take a couple of minutes depedending on the number of threads/users you specified. In my case I have 6000 threads on `/api/v1/prices` on route. After the run is complete, it will generate a *.jtl* file. We will need this file for the next section.
+This will take a couple of minutes depedending on the number of threads/users you specified. In my case I have 6000 threads on `/api/v1/prices` route. After the run is complete, it will generate a *.jtl* file. We will need this file for the next section.
 
 #### Interpreting the results
 
 For this walk-through, I will use the JMeter *Aggregate Report*.
-Launch the JMeter GUI, right click on the default *Test Plan > Add > Listener > Aggregate Report*. This will take sometime depending on the number of threads/users you have configured. 
+Launch the JMeter GUI, right click on the default *Test Plan > Add > Listener > Aggregate Report*. Load your *.jtl* file. This will take sometime depending on the number of threads/users you have configured. 
 
 
 | ![Reaults](/images/blog/jmeter/results.png) | 
