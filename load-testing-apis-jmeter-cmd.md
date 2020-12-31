@@ -29,7 +29,7 @@ To apply the effect on the current shell:-
 source ~/.bashrc
 ```
 
-#### Running Tests
+#### Running the Tests
 
 Remember when using the JMeter GUI mode, you saved your test plan (*jmx*) somewhere in your file system? We will need to pass this file as one of the JMeter console arguments. But first, let's see how we execute the commands.
 
@@ -48,7 +48,12 @@ Since we are no longer running on GUI mode, edit your *.jmx* and remove all the 
 ```sh
 jmeter -n -t fuel-api-cmd.jmx -l fuel-api-results.jtl
 ```
- This will take a couple of minutes depedending on the number of threads/users you specified. In my case I have 5000 threads on `/api/v1/prices` on route.
+This will take a couple of minutes depedending on the number of threads/users you specified. In my case I have 5000 threads on `/api/v1/prices` on route. After the run is complete, it will generate a *.jtl* file. We will need this file for the next section.
+
+#### Interpreting the results
+
+Launch the JMeter GUI 
+
 
 #### References
 ---
