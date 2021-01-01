@@ -4,7 +4,7 @@
 ###### Dec 26, 2020 09:30PM
 ###### [#api]() [#jmeter]()
 
-You have developed a shiny API that you are proud of, but you don't know how it will handle the real-world traffic? This is always a concern for any serious developer. You may of course leave this task to the QA/Testing team and get their feedback, but if you are working alone or your team is small enough that you are still the QA, you may want to get some preliminary numbers from your API. There are many tools out there for loading testing API's but perhaps the most popular is [Apache's JMeter](https://jmeter.apache.org/). From their website:-
+You have developed a shiny API that you are proud of, but you don't know how it will handle the real-world traffic? This is always a concern for any serious developer. For a sizeable enterprise, you may of course have a QA/Testing team that handles this. But if you are working solo or your team is small enough that you are still the QA or just for the heck of it, you may want to get some preliminary numbers from your API. There are many tools out there for loading testing API's but perhaps the most popular is [Apache's JMeter](https://jmeter.apache.org/). From their website:-
 > The Apache JMeter™ application is open source software, a 100% pure Java application designed to load test functional behavior and measure performance. It was originally designed for testing Web Applications but has since expanded to other test functions.
 
 JMeter can be used to test performance on both static &amp; dynamic resources, by simulating heavy load on the material server/resource. 
@@ -26,7 +26,6 @@ GET | /api/v1/prices/annual
 #### 3.0 The plan
 
 We will start by creating a test plan. By default when you launch JMeter, it will create a test case that you can rename or leave it as is. For my case I will call it *Fuel API Test Plan*.
-
 We will create 3 *Thread Groups* each correspoding to the actions above. The first *Thread Group* will be tasked with login &amp; setting the *auth token* globally so the other threads can use it. Here the *Number of Threads/users* will be just one since all we need is just the token. The second &amp; third *Thread Group* is where the all action will be. We will crank-up the *Number of Threads/users* to simulate a real world usage.
 
 > Note: It's highly discouraged to use JMeter GUI mode for load testing. For the sake of this walkthrough we will use it sparingly to do some load tests. On the [next](/blog/load-testing-apis-jmeter-cmd) article, we will look at JMeter command-line tools for load stressing our API. Keep tuned.
