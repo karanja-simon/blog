@@ -89,12 +89,12 @@ Now, how do I make sense of this data? I will try to explain the results, but ha
 
 Thank you for getting here. Hope you have learned something today. Cheers!
 
-### Footnotes
+### 4.0 Footnotes
 ---
-##### 1.0 Disclaimer
+##### 4.1 Disclaimer
 I am no authority on JMeter testing, nor is this a complete look at JMeter capabilities infact it's just one of many capabilities of the JMeter. If you need to learn more about JMeter, please follow the links provided below as they do a great deal of covering JMeter.
 
-##### 1.1 References
+##### 4.2 References
 
 1. [http://www.testingjournals.com/what-is-throughput-in-apache-jmeter/](http://www.testingjournals.com/what-is-throughput-in-apache-jmeter/)
 2. [http://www.testingjournals.com/understand-aggregate-report-jmeter/](http://www.testingjournals.com/understand-aggregate-report-jmeter/)
