@@ -4,16 +4,16 @@
 ###### Dec 30, 2020 11:50AM
 ###### [#api]() [#jmeter]()
 
-On the [previous](/blog/load-testing-apis-jmeter-gui) article, we saw how to setup JMeter with GUI mode. Although the GUI mode is a poweful tool for configuring and debugging your tests, it's a poor choice when it comes to load testing. On this entry, we will look at how we can use the command-line tools to stress our API, and then use the JMeter GUI mode to interprete the results.
+On the [previous](/blog/load-testing-apis-jmeter-gui) article, we saw how to setup JMeter in GUI mode. Although the GUI mode is a poweful tool for configuring and debugging your tests, it's a poor choice when it comes to load testing. On this entry, we will look at how we can use the command-line tools to stress our API, and then use the JMeter GUI mode to interprete the results.
 
-#### Configuring JMeter CMD mode
+#### 1.0 Configuring JMeter CMD mode
 
-You will need to JMeter on system path or enviroment variables on windows. On linux move the extracted JMeter directory to `/usr/local/bin/` or wherever you feel convinient. Then add it to the PATH variables:-
+You will need to add JMeter on your system path or enviroment variables on windows. On linux move the extracted JMeter directory to `/usr/local/bin/` or wherever you feel convinient. Then add it to the PATH variables:-
 
 ```sh
 export PATH=$PATH:/usr/local/bin/apache-jmeter-5.4/bin/
 ```
-The above is temporal, to persist you can add an entry to `/etc/environment` or user shell specific.
+This is temporal, to persist you can add an entry to `/etc/environment` or user shell specific entry.
 
 ```sh
 nano ~/.bashrc
@@ -29,7 +29,7 @@ To apply the effect on the current shell:-
 source ~/.bashrc
 ```
 
-#### Running the Tests
+#### 2.0 Running the Tests
 
 Remember when using the JMeter GUI mode, you saved your test plan (*jmx*) somewhere in your file system? We will need to pass this file as one of the JMeter console arguments. But first, let's see how we execute the commands.
 
@@ -48,9 +48,9 @@ Since we are no longer running on GUI mode, edit your *.jmx* and remove all the 
 ```sh
 jmeter -n -t fuel-api-cmd.jmx -l fuel-api-results.jtl
 ```
-This will take a couple of minutes depedending on the number of threads/users you specified. In my case I have 6000 threads on `/api/v1/prices` route. After the run is complete, it will generate a *.jtl* file. We will need this file for the next section.
+This will take a couple of minutes depedending on the number of threads/users you have on your *.jmx*. In my case I have 6000 threads on `/api/v1/prices` route. After the run is complete, it will generate a *.jtl* file. We will need this file for the next section.
 
-#### Interpreting the results
+#### 3.0 Interpreting the results
 
 For this walk-through, I will use the JMeter *Aggregate Report*.
 Launch the JMeter GUI, right click on the default *Test Plan > Add > Listener > Aggregate Report*. Load your *.jtl* file. This will take sometime depending on the number of threads/users you have configured. 
