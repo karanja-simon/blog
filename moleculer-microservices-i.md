@@ -34,8 +34,11 @@ You can view all available features [here](https://moleculer.services/docs/0.14/
 
 There are some concepts that you will require to understand how Moleculer works. Thier [documentation](https://moleculer.services/docs/0.14/) has all covered but here are the basic concepts behind this great framework.
 
-1. Service: Is a basic Javascript object that holds your part or all of your business logic.
-2. Node: Is an OS process running on local or a remote network.
-3. Local service: 1 or more service running on the single node.
-4. Remote services: 
+1. **Service**: Is a basic Javascript object that holds your part or all of your business logic.
+2. **Node**: Is an OS process running on local or a remote network.
+3. **Local service**: 2 or more service running on the single node.
+4. **Remote services**: Services running across multiple nodes.
+5. **Service Broker**: Does service management &amp; communication between services. Each Node must have an instance of a Service Broker.
+6. **Transporter**: Is a communication bus used by services to exchange messages.
+7. **API Gateway**: Exposes  services to outside world. It's usually a regular service running a HTTP server.
 
