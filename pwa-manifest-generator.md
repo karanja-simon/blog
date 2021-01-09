@@ -7,5 +7,5 @@ specifications to quickly bootstrap your application. Just specify a name and a 
 upload your icon, hit generate and you are done.. Happy coding. 😃😃😃.
 The full web manifest specs are availabe at [mozilla.org](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 
-[Demo](https://skaranja.com/apps/pwa) [Github](https://github.com/karanja-simon/pwa-manifest-generator)
+[Demo](https://skaranja.work/apps/pwa) [Github](https://github.com/karanja-simon/pwa-manifest-generator)
 
