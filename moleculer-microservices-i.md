@@ -42,3 +42,16 @@ There are some basic concepts that you will need to grasp to fully understand ho
 6. **Transporter**: Is a communication bus used by services to exchange messages.
 7. **API Gateway**: Exposes  services to outside world. It's usually a regular service running a HTTP server.
 
+#### 2.2 Architecture: Tasker
+
+We will biuld an API for a fictious application called *Tasker*. *Tasker* is a simple application that let's team leads assing tasks across the team members &amp; get notified once the task/s is/are complete. We will have 4 running services:-
+* *Gateway Service*: Process external client requests &amp; maps them to appropriate service.
+* *User Service*: Will provide storage &amp; management all the available users/team members.
+* *Task Service*: Will manage tasks storage, assignment, statues etc.
+* *Notification Service*: Dispatch tasks status via email.
+
+**But how does all this work?**
+
+
+
+
