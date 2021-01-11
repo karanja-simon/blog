@@ -55,4 +55,10 @@ We will biuld an API for a fictitious application called *Tasker*. *Tasker* is a
 We will have 3 nodes. The first one, `node-1` will host the *Gateway Service* and *User Service*, `node-2` will hold the *Task Service*, while `node-3` will run the *Notification Service*. Let's look at a scenario where the lead creates a task and assigns it to member X. The `POST /task` request will go through `node-1` running a HTTP server. The incoming request is forwared to the *Gateway Service* which maps it's to the *Task Service* running on `node-2`. The request is then forwared to the broker which checks if the service is running locally or remote. Since the our *Task Service* is remote. i.e it's running on another node, the request is passed to a transporter. The transporter delivers the request to `node-2` successfully, since they are connected to the same communication bus. The broker of `node-2` parses the incoming request &amp; maps it to *User Service*. The *User Service* calls the `create` action, which in turn persist the task to a local database. The `node-2` broker emits a task created/assigned event, that is recived by the *Notification Service* running on `node-3`. 
 
 
+| ![Reaults](/images/blog/moleculer/tasker_archi.png) | 
+|:--:| 
+| *Tasker architecture* |
+
+
+
 
