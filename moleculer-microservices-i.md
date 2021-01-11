@@ -32,7 +32,7 @@ You can view all available features [here](https://moleculer.services/docs/0.14/
 
 #### 2.1 Some definations
 
-There are some basic concepts that you will need to  to fully understand how Moleculer works. Thier [documentation](https://moleculer.services/docs/0.14/) has all this covered but here are the basic concepts behind this great framework.
+There are some basic concepts that you will need to familiarize with, to fully understand how Moleculer works. Thier [documentation](https://moleculer.services/docs/0.14/) has all this covered but here are the basic concepts behind this great framework.
 
 1. **Service**: Is a basic Javascript object that holds your part or all of your business logic.
 2. **Node**: Is an OS process running on local or a remote network.
