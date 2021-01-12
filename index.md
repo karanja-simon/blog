@@ -5,7 +5,7 @@
 ##### [@admin](/whoami)
 ###### Jan 09, 2021 02:50PM
 ###### [#nodejs]() [#moleculer]() [#microservices]()
-In the [last](/blog/moleculer-microservices-i) series, we covered the basics of microservices and moleculer. Today 
+In the [last](/blog/moleculer-microservices-i) series, we covered the basics of microservices and moleculer. Today we will build the *Tasker* application using Moleculer framework. For storage, we will use a simple sqlite database with [Moleculer Sequelize-Adapter](https://www.npmjs.com/package/moleculer-db-adapter-sequelize) ORM.
 [Read more](/blog/moleculer-microservices-ii)
 
 ### Dec 2020
