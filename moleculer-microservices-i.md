@@ -9,7 +9,7 @@ There are a couple of microservice frameworks available for Node.js platform. Th
 #### 1.0 Basic Concepts
 
 Microservices is a way of buidling (architecture) software as a collection of small services, that are loosely coupled, running on thier own processes and communicating via a lightweight mechanisms like HTTP, message broker etc. This is in contrast to the traditional systems that are built as a single unit, often called a monolith.
-Alot has been writen about microservices by scholars &amp; pioneers/early adopters like [Amazon](https://aws.amazon.com/microservices/#:~:text=Microservices%20are%20an%20architectural%20and,small%2C%20self%2Dcontained%20teams.) &amp; [Netflix](https://netflixtechblog.com/tagged/microservices) (See footnotes for more sources), so I will not regugitate this informtion. However, there are some universal concepts that any microservice
+Alot has been writen about microservices by scholars &amp; pioneers/early adopters like [Amazon](https://aws.amazon.com/microservices/#:~:text=Microservices%20are%20an%20architectural%20and,small%2C%20self%2Dcontained%20teams) &amp; [Netflix](https://netflixtechblog.com/tagged/microservices) (See footnotes for more sources), so I will not regugitate this informtion. However, there are some universal concepts that any microservice
 regardless of the language implementation, must fulfill. These are, but not limited to:-
 * Service registry &amp; discovery
 * Networking
@@ -59,9 +59,21 @@ We will have 4 nodes. The first one, `node-1` will host the *Gateway Service*, `
 |:--:| 
 | *Tasker architecture* |
 
+#### 2.3 Database Architecture: Database per Service
+
+It's clear from our *Tasker* API that we need some form of data persistence. In a monolith, the decision is always straight forward. One monolith one database with as many tables as necessary. With the microservices, since the objective is to be as loosely coupled as possible, then obviuosly one single database approach cannot work. We need to keep each microservice’s persistent data private to that service and accessible only via its API. 
+
 Now that we have seen part of the *Tasker* architecture, [next](/blog/moleculer-microservices-ii) we will start building the API.
 
 Next -> [Moleculer Microservices: Part II](/blog/moleculer-microservices-ii)
+
+#### 3.0 References
+
+1. [Molceculer Concepts](https://moleculer.services/docs/0.14/concepts.html)
+2. [Database per Service](https://microservices.io/patterns/data/database-per-service.html)
+3. [Database Management](https://relevant.software/blog/microservices-database-management/)
+4. [Amazon Microservices](https://aws.amazon.com/microservices/#:~:text=Microservices%20are%20an%20architectural%20and,small%2C%20self%2Dcontained%20teams)
+5. [Netflix Microservices](https://netflixtechblog.com/tagged/microservices)
 
 
 
