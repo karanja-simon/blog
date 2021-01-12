@@ -35,8 +35,10 @@ This is quite a different one. It's an android app that has a good selection of 
 ###### 6. [Nickolass](https://www.youtube.com/watch?v=c-3xAmWdEHM)
 A good stream worth your time. Check [21-7 lofi hip hop radio](https://www.youtube.com/watch?v=c-3xAmWdEHM) on youtube.
 
+###### 7. [Mr_MoMo Music](https://www.youtube.com/watch?v=b-EF93ebtyM&ab_channel=Mr_MoMoMusic)
+A very niece Japanese Lo-fi themed 24/7 stream. Catch it [Lofi hip hop radio ローファイ - japanese beats to work / study to](https://www.youtube.com/watch?v=b-EF93ebtyM&ab_channel=Mr_MoMoMusic)
 
-###### 7. [the bootleg boy](https://www.youtube.com/watch?v=l7TxwBhtTUY&ab_channel=thebootlegboy)
+###### 8. [the bootleg boy](https://www.youtube.com/watch?v=l7TxwBhtTUY&ab_channel=thebootlegboy)
 [21-7 Mellow & Sleepy beats](https://www.youtube.com/watch?v=c-3xAmWdEHM)
 
 
