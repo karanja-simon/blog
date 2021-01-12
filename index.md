@@ -67,7 +67,7 @@ Unless you fancy the built-in `fetch` API, chances are that you are using or hav
 ### Oct 2020
 ---
 ## [Lo-fi Beats compilation](/blog/lo-fi)
-###### Some beats to chill to as you code.
+###### *Some beats to chill to as you code.*
 ###### [@admin](/whoami)
 ###### Oct 10, 2020 9:50PM
 ###### [#music]() [#lofi]()
