@@ -63,7 +63,7 @@ We will have 4 nodes. The first one, `node-1` will host the *Gateway Service*, `
 
 It's clear from our *Tasker* API that we need some form of data persistence. In a monolith, the decision is always straight forward. One monolith one database with as many tables as necessary. With the microservices, since the objective is to be as loosely coupled as possible, then obviuosly one single database approach cannot work. We need to keep each microservice’s persistent data private to that service and accessible only via its API. 
 
-| ![Tasker](/images/blog/moleculer/tasker_db_archi.png) | 
+| ![Tasker DB](/images/blog/moleculer/tasker_db_archi.png) | 
 |:--:| 
 | *Tasker DB architecture* |
 
