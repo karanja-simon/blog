@@ -30,7 +30,7 @@ You have developed a shiny API that you are proud of, but you don't know how it 
 ###### Dec 20, 2020 02:13PM
 ###### [#nodejs]() [#moleculer]() [#microservices]()
 There are a couple of microservice frameworks available for Node.js platform. The 3 most known would be [Cote](https://cote.com), [Moleculer](https://moleculer) and [Seneca](https://seneca.com). For this part series, I will be exploring [Microservices](https://) in Node.js platform using Moleculer.
-[Read more](/blog/node-express-jest-testing.md)
+[Read more](/blog/moleculer-microservices-i)
 
 #### [Server-less emailing](/blog/serverless-emailing)
 ##### [@admin](/whoami)
