@@ -63,9 +63,8 @@ Create a *src* directory. In it, create a *services* directory. This is where `m
 ```js
 const APIService = require("moleculer-web");
 
-const TaskerAPIService = {
+const TaskerAPIGatewayService = {
   name: "tasker-api",
-  version: "1.0.0",
   mixins: [APIService],
 
   settings: {
@@ -76,11 +75,34 @@ const TaskerAPIService = {
           "REST /task": "task",
         },
       },
+      {
+        path: "/api",
+        aliases: {
+          "REST /users": "users",
+        },
+      },
     ],
   },
 
   actions: {},
 };
 
-module.exports = TaskerAPIService;
+module.exports = TaskerAPIGatewayService;
+```
+
+This is our gateway service. Here, we load `APIService` from `molculer-web`, then create our gateway service. I have `REST` aliases to generate the correspoding `REST` actions. E.g, for `REST /users` this will generate:-
+
+```sh
+   GET /api/users => users.list
+   GET /api/users/:id => users.get
+   POST /api/users => users.create
+   PUT /api/users/:id => users.update
+   PATCH /api/users/:id => users.patch
+   DELETE /api/users/:id => users.remove
+```
+
+We will then need to implement these actions on our users service. (We will do this shortly. Bear with me). Now lets fire our application:
+
+```sh
+yarn run dev
 ```
