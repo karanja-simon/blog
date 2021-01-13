@@ -28,7 +28,9 @@ Since will be running remote services, we will use `nats` as our `transporter`. 
 yarn add nats
 ```
 
+
 ##### Broker configuration
+
 We will need to create a moleculer config for our broker. Remember from our last article that every node must have a broker. We could of course create the broker manually, but since we're using the `moleculer-runner` we will use the config option. I will have 2 broker configs, one for dev &amp; the other for production. On the root of your project create a `moleculer.dev.config.js` &amp; add the following:
 
 ```js
@@ -51,7 +53,7 @@ module.exports = {
 You can create another config for production i.e. `moluculer.config.js` with the relevant features turned on/off. You can check all supported options [here](https://moleculer.services/docs/0.14/configuration.html).
 We need to tell `moleculer-runner` where to find and how to run our services. There are 2 options for this:
 
-##### Option 1
+###### Option 1
 
 On your `package.json` add the following.
 
@@ -61,7 +63,7 @@ On your `package.json` add the following.
     "start": "moleculer-runner --instances=1 ./src/services"
   }
 ```
-##### Options 2
+###### Options 2
 
 Create a `.env` &amp; add `SERVICEDIR` property. 
 
