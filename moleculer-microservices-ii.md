@@ -15,7 +15,7 @@ Initialize an empty project &amp; install Molecular via `npm` or `yarn`
 yarn add moleculer moleculer-web
 ```
 
-We will also require Moleculer REPL. This will allow us to interact with running services, benchmark &amp; importantly, it will allow us start services with `moleculer-runner`. Install it:
+We will also require Moleculer REPL. This will allow us to interact with running services, benchmark &amp; importantly, it will allow us to start services with `moleculer-runner`. Install it:
 
 ```sh
 yarn add moleculer-repl
@@ -53,7 +53,8 @@ We need to tell `moleculer-runner` how &amp; where to find our services. On our 
   }
 ```
 
-> Note: As per my project structure, my servcices lives inside */src* directory.
+
+**Note: As per my project structure, my servcices lives inside */src/services* directory.**
 
 #### The Code
 
