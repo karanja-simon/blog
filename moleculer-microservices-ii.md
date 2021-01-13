@@ -57,7 +57,7 @@ We need to tell `moleculer-runner` how &amp; where to find our services. On our 
 
 #### The Code
 
-Create a *src* directory. In it, create a *services* directory. This is where `moleculer-runner` will pick our services. Inside *service* create *api.service.js* file &amp; add the following:
+Create a *src* directory. In it, create a *services* directory. This is where `moleculer-runner` will pick our services. Inside the *services* create *api.service.js* file &amp; add the following:
 
 ```js
 const APIService = require("moleculer-web");
