@@ -9,6 +9,8 @@ In the [last](/blog/moleculer-microservices-i) series, we covered the basics of 
 
 #### Environment
 
+*Note: Moleculer has a scaffolding tool that you can use to quickly bootstrap your project, but for the purposes of this tutorial, we will start from a clean slate.*
+
 Initialize an empty project &amp; install Molecular via `npm` or `yarn`
 
 ```sh
@@ -25,11 +27,13 @@ Since will be running remote services, we will use `nats` as our `transporter`. 
 ```sh
 yarn add nats
 ```
+
+##### Broker configuration
 We will need to create a moleculer config for our broker. Remember from our last article that every node must have a broker. We could of course create the broker manually, but since we're using the `moleculer-runner` we will use the config option. I will have 2 broker configs, one for dev &amp; the other for production. On the root of your project create a `moleculer.dev.config.js` &amp; add the following:
 
 ```js
 module.exports = {
-  nodeID: "tasker",
+  nodeID: "tasker-node",
   logger: true,
   logLevel: "debug",
 
@@ -40,11 +44,16 @@ module.exports = {
     enabled: true,
   },
 
-  metrics: true,
+  metrics: false,
 };
 ```
+
 You can create another config for production i.e. `moluculer.config.js` with the relevant features turned on/off. You can check all supported options [here](https://moleculer.services/docs/0.14/configuration.html).
-We need to tell `moleculer-runner` where to find and how to run our services. On our `package.json` add the following:
+We need to tell `moleculer-runner` where to find and how to run our services. There are 2 options for this:
+
+##### Option 1
+
+On your `package.json` add the following.
 
 ```json
   "scripts": {
@@ -52,11 +61,27 @@ We need to tell `moleculer-runner` where to find and how to run our services. On
     "start": "moleculer-runner --instances=1 ./src/services"
   }
 ```
+##### Options 2
 
+Create a `.env` &amp; add `SERVICEDIR` property. 
+
+```sh
+SERVICEDIR  = src/services
+```
+
+You will need to install `dotenv` package `yarn add dotenv`
+Then on your `package.json` add the following.
+
+```json
+"scripts": {
+    "dev": "moleculer-runner --env --repl --hot --config moleculer.dev.config.js",
+    "start": "moleculer-runner --env --repl --instances=max"
+  },
+```
 
 **Note: As per my project structure, my servcices lives inside */src/services* directory.**
 
-#### The Code
+#### Now, The Fun Part..
 
 Create a *src* directory. In it, create a *services* directory. This is where `moleculer-runner` will pick our services. Inside the *services* create *api.service.js* file &amp; add the following:
 
@@ -82,9 +107,7 @@ const TaskerAPIGatewayService = {
         },
       },
     ],
-  },
-
-  actions: {},
+  }
 };
 
 module.exports = TaskerAPIGatewayService;
@@ -101,8 +124,15 @@ This is our gateway service. Here, we load `APIService` from `molculer-web`, the
    DELETE /api/users/:id => users.remove
 ```
 
-We will then need to implement these actions on our users service. (We will do this shortly. Bear with me). Now lets fire our application:
+This has `REST` actions mapped to the correspoding action on our users service. We will need to implement these actions on our users service. (We will do this shortly. Bear with me). Now lets fire our application:
 
 ```sh
 yarn run dev
 ```
+
+If all is well, the API should be availabe at `loclhost:3000/api`. If you access `localhost:3000/api/users` you should get a something like this:
+
+```json
+{"name": "ServiceUnavailableError", "message": "Service unavailable","code":503}
+```
+We need to create the user service. Add *user.service.js* on *services* directory.
