@@ -1,5 +1,5 @@
 ## Moleculer Microservices II
-##### *An intro to microservices on Node.js*
+##### *Building the Tasker API*
 ###### [@admin](/whoami)
 ###### Jan 9, 2021 02:50PM
 ###### [#node.js]() [#moleculer]() [#microservices]()
@@ -185,6 +185,6 @@ const UserService = {
 module.exports = UserService;
 ```
 
-Now, access `localhost:3000/api/users` &amp; you should get a list of users. You can also `GET``localhost:3000/api/users/2` or `POST` a new user. Of course our users are hardcoded/in-memory, but in the next section we will add a database for persistence.
+Now, access `localhost:3000/api/users` &amp; you should get a list of users. You can also `GET - localhost:3000/api/users/2` or `POST` a new user. Of course our users are hardcoded/in-memory, but in the next section we will add a database for persistence.
 
 
