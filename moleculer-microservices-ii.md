@@ -12,11 +12,45 @@ In the [last](/blog/moleculer-microservices-i) series, we covered the basics of 
 Initialize an empty project &amp; install Molecular via `npm` or `yarn`
 
 ```sh
-npm i moleculer --save
+yarn add moleculer moleculer-web
 ```
 
-We will also require Moleculer CLI. Install it globally:
+We will also require Moleculer REPL. This will allow us to interact with running services, benchmark &amp; importantly, it will allow us start services with `moleculer-runner`. Install it:
 
 ```sh
-npm i moleculer-cli -g
+yarn add moleculer-repl
 ```
+Since will be running remote services, we will use `nats` as our `transporter`. Download [nats server](https://nats.io/) &amp; start it. We will need to install `nats` npm module:
+
+```sh
+yarn add nats
+```
+We will need to create a moleculer config that `moleculer-runner` is going to use to run our services. On the root of your project create a `moleculer.config.js` &amp; add the following:
+
+```js
+module.exports = {
+  nodeID: "tasker",
+  logger: true,
+  logLevel: "debug",
+
+  transporter: "nats://localhost:4222",
+  requestTimeout: 5 * 1000,
+
+  circuitBreaker: {
+    enabled: true,
+  },
+
+  metrics: false,
+};
+```
+
+We need to tell `moleculer-runner` how &amp; where to find our services. On our `package.json` add the following:
+
+```json
+  "scripts": {
+    "dev": "moleculer-runner --repl --hot --config moleculer.dev.config.js ./src/services",
+    "start": "moleculer-runner --instances=1 ./src/services"
+  }
+```
+
+> Note
