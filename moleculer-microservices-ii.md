@@ -138,3 +138,53 @@ If all is well, the API should be availabe at `loclhost:3000/api`. If you access
 {"name": "ServiceUnavailableError", "message": "Service unavailable","code":503}
 ```
 We need to create the user service. Add *user.service.js* on *services* directory.
+
+```js
+const { MoleculerError } = require("moleculer").Errors;
+
+const users = [
+  {
+    id: 1,
+    name: "James",
+    team: "QA",
+  },
+  {
+    id: 2,
+    name: "Simon",
+    team: "AOSP",
+  },
+];
+
+const UserService = {
+  name: "users",
+
+  actions: {
+    list(ctx) {
+      return users;
+    },
+
+    create(ctx) {
+      const { name, team } = ctx.params;
+      const user = { id: users.length + 1, name: name, team: team };
+      users.push(user);
+
+      return user;
+    },
+
+    get(ctx) {
+      const { id } = ctx.params;
+      const user = users.find((user) => user.id === Number(id));
+
+      if (user) return user;
+
+      return Promise.reject(new MoleculerError("User not found", 404));
+    },
+  },
+};
+
+module.exports = UserService;
+```
+
+Now, access `localhost:3000/api/users` &amp; you should get a list of users. You can also `GET``localhost:3000/api/users/2` or `POST` a new user. Ofcourse our users are hardcoded/in-memory, but in the next section we will add a database for persistence.
+
+
