@@ -16,7 +16,7 @@ regardless of the language implementation, must fulfill. These are, but not limi
 * Load balancing
 * Fault tolerance
 
-We will look at this &amp; and see how they are implemented on the [Moleculer](https://moleculer.services/) framework, but first let's see what we will be building.
+We will look at this &amp; and see how they are implemented on the [Moleculer](https://moleculer.services/) framework, but first let's see look at some core concepts in Moleculer. 
 
 #### 2.0 Moleculer
 
