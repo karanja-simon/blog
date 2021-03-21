@@ -1,3 +1,13 @@
+### March 2021
+---
+
+#### [SSL Client Authentication](/blog/ssl-client-authentication)
+##### [@admin](/whoami)
+###### Mar 14, 2021 12:20PM
+###### [#nodejs]() [#ssl]() [#authentication]()
+In traditional RESTful systems, authentication is quite straight-forward. A client registers in the platform and then uses these credentials stored on the platform to authenticate themselves. Now, what if you don't have a prior knowledge of a client, i.e the client doesn't exist on your platform? How would you know a genuine client vs a malicious one? 
+[Read more](/blog/ssl-client-authentication)
+
 ### Feb 2021
 ---
 
