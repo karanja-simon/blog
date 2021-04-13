@@ -1,10 +1,10 @@
 ## SSL Clients Authentication
 ##### *RESTful API clients authentication via client certificates*
 ###### [@admin](/whoami)
-###### Dec 30, 2020 11:50AM
+###### Mar 14, 2021 12:20PM
 ###### [#ssl]() [#rest]()
 
-In traditional RESTful systems, authentication is quite straight-forward. A client registers in the platform and then uses these credentials stored on the platform to authenticate themselves. Now, what if you don't have a prior knowledge of a client, i.e the client doesn't exist on your platform? How would you know a genuine client vs a malicious one? 
+In traditional RESTful systems, authentication is quite straight-forward. A client registers in the platform and then uses these credentials stored on the platform to authenticate themselves. Now, what if you don't have a prior knowledge of a client, i.e the client doesn't exist on your platform? How would you know a genuine client vs a malicious one? The answer lies on ssl client certificates.
 
 #### 1.0 Configuring JMeter CMD mode
 
