@@ -16,7 +16,7 @@ same title.
 |:--:| 
 | *Web interface* |
 
-You can follow this link [https://kikuyuproverbs.work/](https://kikuyuproverbs.work) for an early release.
+You can follow this link [https://kikuyuproverbs.work](https://kikuyuproverbs.work) for an early release.
 
 | ![Reaults](/images/blog/proverbs/mobile-ui.png) | 
 |:--:| 
