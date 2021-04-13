@@ -12,13 +12,13 @@ same title.
 *For the Kikuyu people, please note the work on accenting the proverbs with the Kikuyu vowels is ongoing and the entries will be updated as soon as the work is complete*
 ##### Interface
 
-| ![Reaults](/images/proverbs/web-ui.png) | 
+| ![web interface](/images/proverbs/web-ui.png) | 
 |:--:| 
 | *Web interface* |
 
 You can follow this link [https://kikuyuproverbs.work](https://kikuyuproverbs.work) for an early release.
 
-| ![Reaults](/images/proverbs/mobile-ui.png) | 
+| ![mobile interface](/images/proverbs/mobile-ui.png) | 
 |:--:| 
 | *Mobile interface* |
 
