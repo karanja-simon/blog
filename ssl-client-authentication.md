@@ -6,8 +6,12 @@
 
 In traditional RESTful systems, authentication is quite straight-forward. A client registers in the platform and then uses these credentials stored on the platform to authenticate themselves. Now, what if you don't have a prior knowledge of a client, i.e the client doesn't exist on your platform? How would you know a genuine client vs a malicious one? The answer lies on ssl client certificates.
 
-#### 1.0 Configuring JMeter CMD mode
-
+#### 1.0 Some background 
+For the most part, SSL is used that to facilitate encryption and establish trust between clients and web browsers. Whilst this is what is known by most 
+people, SSL can be use to authenticate clients, a good example is SSH authentication 
+via client certificates. 
+For this, we will use Open SSl to generate our client certificate, of course for secure/production systems you can 
+buy certificates from trusted authority like Sentigo. 
 You will need to add JMeter on your system path or enviroment variables on windows. On linux move the extracted JMeter directory to `/usr/local/bin/` or wherever you feel convinient. Then add it to the PATH variables:-
 
 ```sh
@@ -16,7 +20,7 @@ export PATH=$PATH:/usr/local/bin/apache-jmeter-5.4/bin/
 This is temporal, to persist you can add an entry to `/etc/environment` or user shell specific entry.
 
 ```sh
-nano ~/.bashrc
+nano ~/.bashrcth
 ```
  And add the entry on the bottom
  
@@ -85,10 +89,7 @@ Now, how do I make sense of this data? I will try to explain the results, but ha
 
 **99% Line**: 99% of the samples took no more than this time. The remaining samples took at least as long as this. (99th percentile)
 
-**Median**: It is the time in the middle of a set of samples result. It indicates that 50% of the samples took no more than this time i.e the remainder took at least as long.
-
-Thank you for getting here. Hope you have learned something today. Cheers!
-
+**Median**: It is the time in the middle of a set of samples 
 #### 4.0 Footnotes
 ---
 ##### 4.1 Disclaimer
