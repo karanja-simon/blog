@@ -1,3 +1,12 @@
+### Apr 2021
+---
+
+#### [A developer PSR?](/blog/psr)
+##### [@admin](/whoami)
+###### Apr 13, 2021 02:20PM
+###### [#csr]() [#freebie]()
+We all know of Corporate Social Responsibility (CSR), but there exists another form of social responsibility called Individual/Personal Social Responsibilty (PSR). It's defined as the primary responsibility of an individual toward family, workplace, community, and environment (both ecological and social). [See this entry from Jayashree](https://www.linkedin.com/pulse/personal-social-responsibility-psr-jayashree-venugopala). As developer, I see this as a call to build a solution/software that is free, easily acessible and relevant. It's with this philosophy that I decided to an application that could immortalize the wisdom of the Agikuyu people. Here is my effort to create a collection of 1000 Kikuyu proverbs [Read more](/blog/psr)
+
 ### March 2021
 ---
 
