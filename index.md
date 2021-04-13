@@ -17,16 +17,6 @@ We all know of Corporate Social Responsibility (CSR), but there exists another f
 In traditional RESTful systems, authentication is quite straight-forward. A client registers in the platform and then uses these credentials stored on the platform to authenticate themselves. Now, what if you don't have a prior knowledge of a client, i.e the client doesn't exist on your platform? How would you know a genuine client vs a malicious one? 
 [Read more](/blog/ssl-client-authentication)
 
-### Feb 2021
----
-
-#### [React Component Patterns: Compound Components](/blog/moleculer-microservices-ii)
-##### [@admin](/whoami)
-###### Feb 04, 2021 02:50PM
-###### [#react]() [#context-api]() [#pattern]()
-In the [last](/blog/moleculer-microservices-i) series, we covered the basics of microservices and moleculer. Today we will build the *Tasker* application using Moleculer framework. For storage, we will use a simple sqlite database with [Moleculer Sequelize-Adapter](https://www.npmjs.com/package/moleculer-db-adapter-sequelize) ORM.
-[Read more](/blog/moleculer-microservices-ii)
-
 ### Jan 2021
 ---
 
