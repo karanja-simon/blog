@@ -1,10 +1,10 @@
-## Load Testing API's with JMeter: CMD Tools &amp; Results Interpretation
-##### *JMeter CMD Tools &amp; Interpreting the results*
+## SSL Clients Authentication
+##### *RESTful API clients authentication via client certificates*
 ###### [@admin](/whoami)
 ###### Dec 30, 2020 11:50AM
-###### [#api]() [#jmeter]()
+###### [#ssl]() [#rest]()
 
-On the [previous](/blog/load-testing-apis-jmeter-gui) article, we saw how to setup JMeter in GUI mode. Although the GUI mode is a poweful tool for configuring and debugging your tests, it's a poor choice when it comes to load testing. On this entry, we will look at how we can use the command-line tools to stress our API, and then use the JMeter GUI mode to interprete the results.
+In traditional RESTful systems, authentication is quite straight-forward. A client registers in the platform and then uses these credentials stored on the platform to authenticate themselves. Now, what if you don't have a prior knowledge of a client, i.e the client doesn't exist on your platform? How would you know a genuine client vs a malicious one? 
 
 #### 1.0 Configuring JMeter CMD mode
 
