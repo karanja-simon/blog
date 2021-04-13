@@ -7,7 +7,7 @@ We all know of Corporate Social Responsibility (CSR), but there exists another f
 It's defined as the primary responsibility of an individual toward family, workplace, community, and environment (both ecological and social). 
 [See this entry from Jayashree](https://www.linkedin.com/pulse/personal-social-responsibility-psr-jayashree-venugopala). As developer, 
 I see this as a call to build a solution/software that is free, easily acessible and relevant. It's with this philosophy that I decided to an 
-application that could immortalize the wisdom of the Agikuyu people. Here is my effort to create a collection of 1000 Kikuyu proverbs, based on G. Barra book of the 
+application that could immortalize the wisdom of the Agĩkũyũ people. Here is my effort to create a collection of 1000 Kikuyu proverbs, based on G. Barra book of the 
 same title.
 
 #### 1.0 Interface
@@ -16,7 +16,7 @@ same title.
 
 ---
 ##### 2.0 Disclaimer
-I am no authority on Agikuyu or thier culture.
+I am no authority on Agĩkũyũ or thier culture.
 
 ##### 4.2 References
 
