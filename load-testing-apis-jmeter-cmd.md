@@ -56,7 +56,7 @@ For this walk-through, I will use the JMeter *Aggregate Report*.
 Launch the JMeter GUI, right click on the default *Test Plan > Add > Listener > Aggregate Report*. Load your *.jtl* file. This will take sometime depending on the number of threads/users you have configured. 
 
 
-| ![Reaults](/images/blog/jmeter/results.png) | 
+| ![Results](/images/blog/jmeter/results.png) | 
 |:--:| 
 | *Test run results* |
 
