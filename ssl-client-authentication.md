@@ -18,40 +18,46 @@ people, SSL can be use to authenticate clients, called SSL mutual authetication.
 #### Generating SSL certificates
 For this, we will use OpenSSl to generate our client certificate, of course for secure/production systems you can 
 buy certificates from trusted authority like Sentigo. Here we will be our own Certificate Authority (CA) and issue both the server and client certificates. Assuming you have OpenSSL already setup.
-
-###### 1.0 Generate a certificate authority
+**Create two folders/directories, i.e server and client where the correspoding certificates files will be stored.**
+##### 1.0 Generate a certificate authority
 
 ```sh
-openssl req -x509 -newkey rsa:4096 -keyout server/ca_key.pem -out server/ca_cert.pem -nodes -days 365	-subj "/CN=localhost/O=Client\ Certificate\ Demo"
+openssl req -x509 -newkey rsa:4096 -keyout server/ca_key.pem -out server/ca_cert.pem -nodes -days 365
 ```
-###### 2.0 Generate server private key
+##### 2.0 Generate server private key
 
 ```sh
 opensslgenrsa -out server/server-key.pem 4096
 ```
-###### 2.1 Generate server certificate generation request
+##### 2.1 Generate server certificate signing request
 
 ```sh
 opensslreq -new -sha256 -key server/server-key.pem -out server/server-csr.pem
 ```
-###### 2.2 Generate server certificate
+##### 2.2 Generate server certificate
 
 ```sh
 openssl x509 -req -days 365 -in server/server-csr.pem -CA server/ca-crt.pem -CAkey server/ca-key.pem -CAcreateserial -out server/server-crt.pem
 ```
-###### 3.0 Generate client private key
+##### 3.0 Generate client private key
 
 ```sh
 opensslgenrsa -out client/clientA-key.pem 4096
 ```
-###### 3.1 Generate client certificate generation request
+##### 3.1 Generate client certificate signing request
 
 ```sh
-opensslreq -new -sha256 -key /client/clientA-key.pem -out client/clientA-csr.pem
+opensslreq -new -sha256 -key client/clientA-key.pem -out client/clientA-csr.pem
 ```
-###### 3.2 Generate client certificate
+##### 3.2 Generate client certificate
 
 ```sh
 openssl x509 -req -days 365 -in clientA-csr.pem -CA ca-crt.pem -CAkey ca-key.pem -CAcreateserial -out clientA-crt.pem
 ```
+
+
+#### Some Code
+
+
+
  
