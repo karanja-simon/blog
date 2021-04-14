@@ -19,5 +19,9 @@ For this, we will use OpenSSl to generate our client certificate, of course for 
 buy certificates from trusted authority like Sentigo. Here we will be our own Certificate Authority (CA) and issue both the server and client certificates. Assuming you have OpenSSL already setup.
 *Generate server certificate*
 
+```sh
+openssl req -x509 -newkey rsa:4096 -keyout server/server_key.pem -out server/server_cert.pem -nodes -days 365	-subj "/CN=localhost/O=Client\ Certificate\ Demo"
+```
+
 
  
