@@ -143,14 +143,19 @@ Am using Postman to simulate an API request. To set the client certificates on P
 |:--:| 
 | *Client certificate, Postman* |
 
-Running this and hitting the /private end point, I get a success message:-
+Running this and hitting the `/private` end point, I get a success message:-
 
 ```json
 {
     "message": "Welcome to private section"
 }
-
 ```
+
+Try providing an invalid certificate, and the request should fail with a `401` status code.
+
+#### Sources
+
+Get the project source code here: []()
 
 #### References
 1. [https://techcommunity.microsoft.com/t5/iis-support-blog/client-certificate-authentication-part-1/ba-p/324623](https://techcommunity.microsoft.com/t5/iis-support-blog/client-certificate-authentication-part-1/ba-p/324623)
