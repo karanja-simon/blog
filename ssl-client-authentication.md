@@ -56,17 +56,20 @@ openssl x509 -req -days 365 -in client/client-csr.pem -CA server/ca-crt.pem -CAk
 ```
 
 #### Some Code
-Now, for the Node.js part, lets build a simple https server with express
+
+Now, for the Node.js part, lets build a simple https server with express.
+
 ```js
 const express = require("express");
 const https = require("https");
 const path = require("path");
 const fs = require("fs");
+
 const authenticate = require("./authenticate");
+const errorHandler = require("./error-handler");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-const privateRouter = express.Router();
 
 const __DIR = path.join(__dirname, './ssl/server');
 
@@ -80,16 +83,25 @@ const opts = {
 	]
 };
 
-// Here, we register our authentication middleware. It will
-// be responsible for checking and validating client certificates.
-app.use("/private", authenticate, privateRouter);
+app.use((err, req, res, next) => {
+    errorHandler(err, res);
+});
+
+app.use("/private", authenticate, (req, res) => {
+    res.status(200).json({message: 'Welcome to private section'})
+});
+
+app.use((err, req, res, next) => {
+    errorHandler(err, res);
+});
 
 https.createServer(opts, app).listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
 });
 
+
 ```
-Of importance here is line 77, i.e
+Of importance here is this line:-
 
 ```js 
 rejectUnauthorized: true 
@@ -99,24 +111,48 @@ With this, we reject any unauthenticated traffic. Ofcourse for debug purposes, y
 Now for the fun part, let look at our authentication middleware.
 
 ```js 
+const HttpException = require("./HttpException");
+
 const authenticate = (req, res, next) => {
     const cert = req.socket.getPeerCertificate();
+    const currentDate = new Date();
+    const FINGERPRINT_SET = ['CB:D7:52:53:51:EC:6D:58:CB:65:5D:7E:85:CC:73:ED:88:AF:C2:08'];
 
-    console.log('Cert: ', cert);
+    if (req.client.authorized === false) throw new HttpException(401, 'SSL certificate is require');
 
-	if (req.client.authorized) {
-		res.send(`Hello ${cert.subject.CN}, your certificate was issued by ${cert.issuer.CN}!`);
+    // Validate validity date
+    if (currentDate < new Date(cert.valid_from) || currentDate > new Date(cert.valid_to)) throw new HttpException(401, 'Expired certficate');
 
-	} else if (cert.subject) {
-		res.status(403)
-			 .send(`Sorry ${cert.subject.CN}, certificates from ${cert.issuer.CN} are not welcome here.`);
+    //  Validate the fingerprint
+    if (FINGERPRINT_SET.indexOf(cert.fingerprint) === -1) throw new HttpException(401, 'Fingerprint mismatch');
 
-	} else {
-		res.status(401)
-		   .send(`Sorry, but you need to provide a client certificate to continue.`);
-	}
+    // Validate the issuer
+    if (cert.issuer.CN.toLowerCase() !== "localhost") throw new HttpException(401, 'Invalid issuer');
+
+    // Everything looks good..
+
+    next();
 }
 
 module.exports = authenticate;
 ```
+Here, am a couple of values e.g fingerprint, dates etc to determine the authenticity of the provided certificate. Ofcourse, there are many parameters you could check against, but for the purpose of this entry, the above will suffice.
+
+#### Testing
+Am using Postman to simulate an API request. To set the client certificates on Postman, go to Settings > Certificates then add the CA and the client certificates.  | ![SSL Mutual Authentication](/images/blog/ssl/postman.png) | 
+|:--:| 
+| *Client certificate, Postman* |
+
+Running this and hitting the /private end point, I get a success message:-
+
+```json
+{
+    "message": "Welcome to private section"
+}
+
+```
+
+#### References
+1. [https://techcommunity.microsoft.com/t5/iis-support-blog/client-certificate-authentication-part-1/ba-p/324623](https://techcommunity.microsoft.com/t5/iis-support-blog/client-certificate-authentication-part-1/ba-p/324623)
+2. [https://www.matteomattei.com/client-and-server-ssl-mutual-authentication-with-nodejs/](https://www.matteomattei.com/client-and-server-ssl-mutual-authentication-with-nodejs/)
 
