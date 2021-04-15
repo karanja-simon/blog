@@ -139,7 +139,9 @@ module.exports = authenticate;
 Here, am a couple of values e.g fingerprint, dates etc to determine the authenticity of the provided certificate. Ofcourse, there are many parameters you could check against, but for the purpose of this entry, the above will suffice.
 
 #### Testing
-Am using Postman to simulate an API request. To set the client certificates on Postman, go to Settings > Certificates then add the CA and the client certificates.  | ![Postman certificate](/images/blog/ssl/postman.png) | 
+Am using Postman to simulate an API request. To set the client certificates on Postman, go to Settings > Certificates then add the CA and the client certificates.  
+| ![Postman certificate](/images/blog/ssl/postman.png) |
+|:--:|
 | *Client certificate, Postman* |
 
 Running this and hitting the `/private` end point, I get a success message:-
