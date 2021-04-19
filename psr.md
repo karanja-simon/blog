@@ -26,7 +26,7 @@ Currently, the application will only be available on Android platform.
 
 ---
 ##### Disclaimer
-I am no authority on Agĩkũyũ people or thier culture, therefore some of the proverbs may have typos that occured during the data entry. If it's the case, please suggest an edit by sending the errorneous entry and the correction to my email. As indicated above, the work is ongoing to have the proverbs accented, as this was missing on the source material.
+ I am no authority on Agĩkũyũ people or their culture, therefore some of the proverbs may have typos that may or may not have occurred during the data entry. If it's the case, please suggest an edit by sending the erroneous entry and the correction to the email: admin@skdev.work. Since the work is ongoing, the entry may not be complete or some of the proverbs may not have been accented. Please bear with me as I continue updating the work.
 
 ##### References
 
