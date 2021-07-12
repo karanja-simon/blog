@@ -54,92 +54,51 @@ openssl x509 -req -days 365 -in client/client-csr.pem -CA server/ca-crt.pem -CAk
 
 #### 4.0 The Java way
 Here is where Java does things a bit differently. For this to work, Java needs something called a keystore and a truststore, both of which can be generated with a keytool (It's already included in your JDK).
-Now, what are these stores I hear? A keystore is repository that holds your server's key and certificate, while the truststore, well, it holds the Certificate Authority i.e the certificates that will be used to identify others. Java has a proprietary format: *Java Key Store (jks)* although it also supports the standard *Public-Key Cryptography Standards (PKCS#12) .p12 or .pfx*.
+Now, what are these stores I hear? A keystore is repository that holds your server's key and certificate, while the truststore, well, it holds the Certificate Authority i.e the certificates that will be used to identify others. Java has a proprietary format: *Java Key Store (.jks)* although it also supports the standard *Public-Key Cryptography Standards (PKCS#12) .p12 or .pfx*.
 
-##### 4.1 G
+##### 4.1 Import to keystore
+We will now import the generated keys and certificates into the keystore. We will PKCS to package our key and certificate together.
+Let's start with the server's:
+
+```sh
+openssl pkcs12 -export -out server.p12 -name "server" -inkey server/server-key.pem -in server/server-crt.pem
+```
+Now that we have combined the certificate and it's correspoding key, let's create the keystore:
+
+```sh
+keytool -importkeystore -srckeystore server.p12 -srcstoretype PKCS12 -destkeystore server-keystore.jks -deststoretype JKS
+```
 
 #### Some Code
+Go ahead to [Spring Initializr](https://start.spring.io/) and generate a boilerplate with `Spring Web`, `Thymeleaf` and `Spring Security`, download and extract the files. Next let's create a simple controller
 
-Now, for the Node.js part, lets build a simple https server with express.
+```java
 
-```js
-const express = require("express");
-const https = require("https");
-const path = require("path");
-const fs = require("fs");
-
-const authenticate = require("./authenticate");
-const errorHandler = require("./error-handler");
-
-const PORT = process.env.PORT || 3000;
-const app = express();
-
-const __DIR = path.join(__dirname, './ssl/server');
-
-const opts = {
-	key: fs.readFileSync(path.join(__DIR, 'server-key.pem')),
-	cert: fs.readFileSync(path.join(__DIR, 'server-crt.pem')),
-	requestCert: true,
-	rejectUnauthorized: true,
-	ca: [
-		fs.readFileSync(path.join(__DIR, 'ca-crt.pem'))
-	]
-};
-
-app.use((err, req, res, next) => {
-    errorHandler(err, res);
-});
-
-app.use("/private", authenticate, (req, res) => {
-    res.status(200).json({message: 'Welcome to private section'})
-});
-
-app.use((err, req, res, next) => {
-    errorHandler(err, res);
-});
-
-https.createServer(opts, app).listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
-});
-
-
-```
-Of importance here is this line:-
-
-```js 
-rejectUnauthorized: true 
-```
-
-With this, we reject any unauthenticated traffic. Ofcourse for debug purposes, you can set it to false since any unauthenticated requests will be reject silently.
-Now for the fun part, let look at our authentication middleware.
-
-```js 
-const HttpException = require("./HttpException");
-
-const authenticate = (req, res, next) => {
-    const cert = req.socket.getPeerCertificate();
-    const currentDate = new Date();
-    const FINGERPRINT_SET = ['CB:D7:52:53:51:EC:6D:58:CB:65:5D:7E:85:CC:73:ED:88:AF:C2:08'];
-
-    if (req.client.authorized === false) throw new HttpException(401, 'SSL certificate is require');
-
-    // Validate validity date
-    if (currentDate < new Date(cert.valid_from) || currentDate > new Date(cert.valid_to)) throw new HttpException(401, 'Expired certficate');
-
-    //  Validate the fingerprint
-    if (FINGERPRINT_SET.indexOf(cert.fingerprint) === -1) throw new HttpException(401, 'Fingerprint mismatch');
-
-    // Validate the issuer
-    if (cert.issuer.CN.toLowerCase() !== "localhost") throw new HttpException(401, 'Invalid issuer');
-
-    // Everything looks good..
-
-    next();
+@Controller
+public class UserController {
+    @RequestMapping(value = "/user")
+    public String user(Model model, Principal principal) {
+        
+        UserDetails currentUser 
+          = (UserDetails) ((Authentication) principal).getPrincipal();
+        model.addAttribute("username", currentUser.getUsername());
+        return "user";
+    }
 }
 
-module.exports = authenticate;
 ```
-Here, am a couple of values e.g fingerprint, dates etc to determine the authenticity of the provided certificate. Ofcourse, there are many parameters you could check against, but for the purpose of this entry, the above will suffice.
+For the configuration, add the following to `application.properties`
+
+```js 
+server.ssl.key-store=../store/keystore.jks
+server.ssl.key-store-password=${PASSWORD}
+server.ssl.key-alias=localhost
+server.ssl.key-password=${PASSWORD}
+server.ssl.enabled=true
+server.port=8443
+spring.security.user.name=Admin
+spring.security.user.password=admin
+```
 
 #### Testing
 Am using Postman to simulate an API request. To set the client certificates on Postman, go to Settings > Certificates then add the CA and the client certificates.  
