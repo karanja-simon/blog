@@ -4,8 +4,8 @@
 ###### Jul, 2021 06:30PM
 ###### [#ssl]() [#rest]() [#springboot]()
 
- I have been refreshing my Java/Spring Boot skills for the last few months, and nothing could be better that rewriting a blog entry [cloudboost.io](https://blog.cloudboost.io/implementing-mutual-ssl-authentication-fc20ab2392b3) I had done previously using Node.js. One of the things I 
- like Java is how security is intergrated in to the core framework. By simply including the Spring Security, you are literally half-way there to building secure applications.
+ I have been refreshing my Java/Spring Boot skills for the last few months, and nothing could be better that rewriting a [blog entry](/blog/ssl-client-authentication), I had done previously using Node.js. One of the things I 
+ like about Java is how security is intergrated in to the core framework. By simply including the Spring Security, you are literally half-way there to building secure applications.
  In this entry, will look at how easy and robust it is to implement SSL mutual authentication in Java.
 #### SSL Mutual Authentication 
 For mutual SSL authentication or 2-way-SSL authentication, both the server and client will verify each other's certificate in a 12 steps digital handshake. You read more 
