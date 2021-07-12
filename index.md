@@ -4,7 +4,9 @@
 ##### [@admin](/whoami)
 ###### Jul, 2021 06:30PM
 ###### [#java]() [#spingboot]() [#ssl]() [#authentication]()
-In traditional RESTful systems, authentication is quite straight-forward. A client registers in the platform and then uses these credentials stored on the platform to authenticate themselves. Now, what if you don't have a prior knowledge of a client, i.e the client doesn't exist on your platform? How would you know a genuine client vs a malicious one? 
+ I have been refreshing my Java/Spring Boot skills for the last few months, and nothing could be better that rewriting a blog entry [cloudboost.io](https://blog.cloudboost.io/implementing-mutual-ssl-authentication-fc20ab2392b3) I had done previously using Node.js. One of the things I 
+ like Java is how security is intergrated in to the core framework. By simply including the Spring Security, you are literally half-way there to building secure applications.
+ In this entry, will look at how easy and robust it is to implement SSL mutual authentication in Java.
 [Read more](/blog/ssl-mutual-auth-java)
 
 ### Apr 2021
