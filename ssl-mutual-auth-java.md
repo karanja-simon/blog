@@ -52,6 +52,12 @@ openssl req -new -sha256 -key client/client-key.pem -out client/client-csr.pem
 openssl x509 -req -days 365 -in client/client-csr.pem -CA server/ca-crt.pem -CAkey server/ca-key.pem -CAcreateserial -out client/client-crt.pem
 ```
 
+#### 4.0 The Java way
+Here is where Java does things a bit differently. For this to work, Java needs something called a keystore and a truststore, both of which can be generated with a keytool (It's already included in your JDK).
+Now, what are these stores I hear? A keystore is repository that holds your server's key and certificate, while the truststore, well, it holds the Certificate Authority i.e the certificates that will be used to identify others. Java has a proprietary format: *Java Key Store (jks)* although it also supports the standard *Public-Key Cryptography Standards (PKCS#12) .p12 or .pfx*.
+
+##### 4.1 G
+
 #### Some Code
 
 Now, for the Node.js part, lets build a simple https server with express.
