@@ -1,3 +1,12 @@
+### Jul 2021
+---
+#### [Spring Boot: Mutual SSL Authentication](/blog/ssl-mutual-auth-java)
+##### [@admin](/whoami)
+###### Jul, 2021 06:30PM
+###### [#java]() [#spingboot]() [#ssl]() [#authentication]()
+In traditional RESTful systems, authentication is quite straight-forward. A client registers in the platform and then uses these credentials stored on the platform to authenticate themselves. Now, what if you don't have a prior knowledge of a client, i.e the client doesn't exist on your platform? How would you know a genuine client vs a malicious one? 
+[Read more](/blog/ssl-mutual-auth-java)
+
 ### Apr 2021
 ---
 
@@ -7,7 +16,7 @@
 ###### [#csr]() [#freebie]()
 We all know of Corporate Social Responsibility (CSR), but there exists another form of social responsibility called Individual/Personal Social Responsibilty (PSR). It's defined as the primary responsibility of an individual toward family, workplace, community, and environment (both ecological and social). [See this entry from Jayashree](https://www.linkedin.com/pulse/personal-social-responsibility-psr-jayashree-venugopala). As developer, I see this as a call to build a solution/software that is free, easily acessible and relevant. It's with this philosophy that I decided to an application that could immortalize the wisdom of the Agikuyu people. Here is my effort to create a collection of 1000 Kikuyu proverbs [Read more](/blog/psr)
 
-### March 2021
+### Mar 2021
 ---
 
 #### [SSL Client Authentication](/blog/ssl-client-authentication)
