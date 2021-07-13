@@ -4,7 +4,7 @@
 ###### Jul, 2021 06:30PM
 ###### [#ssl]() [#rest]() [#springboot]()
 
-## *`This is a draft. It's incomplete and may contain errors or materials that might be removed on final copy.`*
+## *`This is a draft. It's incomplete and may contain errors or materials that might be removed on the final copy.`*
 
  I have been refreshing my Java/Spring Boot skills for the last few months, and nothing could be better than rewriting a [blog entry](/blog/ssl-client-authentication), I had done previously using Node.js. One of the things I 
  like about Java is how security is intergrated in to the core framework. By simply including the Spring Security, you are literally half-way there to building secure applications.
