@@ -1,3 +1,4 @@
+<!--
 ### Jul 2021
 ---
 #### [Spring Boot: Mutual SSL Authentication](/blog/ssl-mutual-auth-java)
@@ -9,7 +10,7 @@
  like about Java is how security is intergrated in to the core framework. By simply including the Spring Security, you are literally half-way there to building secure applications.
  In this entry, will look at how easy and robust it is to implement SSL mutual authentication in Java.
 [Read more](/blog/ssl-mutual-auth-java)
-
+-->
 ### Apr 2021
 ---
 
