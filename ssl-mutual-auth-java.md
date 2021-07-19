@@ -59,7 +59,7 @@ Here is where Java does things a bit differently. For this to work, Java needs s
 Now, what are these stores I hear? A keystore is repository that holds your server's key and certificate, while the truststore, well, it holds the Certificate Authority i.e the certificates that will be used to identify others. Java has a proprietary format: *Java Key Store (.jks)* although it also supports the standard *Public-Key Cryptography Standards (PKCS#12) .p12 or .pfx*.
 
 ##### 4.1 Import to keystore
-We will now import the generated keys and certificates into the keystore. We will PKCS to package our key and certificate together.
+We will now import the generated keys and certificates into the keystore. We will use PKCS to package our key and certificate together.
 Let's start with the server's:
 
 ```sh
