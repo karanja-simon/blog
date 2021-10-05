@@ -1,5 +1,5 @@
 ## How much does Nodejs suck at CPU intesive computations?
-##### *A look at the weakness of js single thread architecture*
+##### *A look at Nodejs CPU-bound task handling*
 ###### [@admin](/whoami)
 ###### Oct 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
@@ -58,8 +58,8 @@ http://localhost:4001/fib/45
 ```
 Since the computation takes time, the Event Loop is held captive by our recursive task. Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we get a waiting indicator. This means our first request is still being processed by the Event Loop/Main Thread and until it completes and release the CPU, our second request will keep waiting.
 
-##### How would a Multi-threaded language cope?
-I will implement the same algorithm using Java Spring Boot and see how it copes with the same. Below is the recursive method in Java:
+##### How would a Multi-threaded system cope?
+I will implement the same algorithm using Java Spring Boot with Apache Tomcat and see how it copes with the same. Below is the recursive method in Java:
 
 ```java
 public int fib(int n){
@@ -96,74 +96,65 @@ Again, running this server and making a `GET` request for a 45'th term of the Fi
 ```bash
 http://localhost:4002/fib/45
 ```
-Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different thread, meaning for every request, a new thread is spun to handle it.
+Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different thread, meaning for every request, a new thread is spun to handle it. This is so called one-thread-per client system, where each client is assigned its own thread. This is the implementation in many servers like Apache. 
 
 ### What can we do to improve this on Nodejs?
-#### Option 1: Delegate the intesive task to another process/handler
-We know Nodejs is suited for quick and fast tasks that does not hold-up the CPU
+#### Offloading: Worker Pool
+We know Nodejs excels in I/O-bound tasks, but suffers on complex calculations. One approach to overcome this, is by offloading task to Worker Pool, the second kind of threading the Nodejs environment offers. The downside of this, is the communication overhead between the Worker and Event Loop. From [Nodejs docs](https://nodejs.org/api/cluster.html):
+
+>  From a Worker, you cannot manipulate a JavaScript object in the Event Loop's namespace. Instead, you have to serialize and deserialize any objects you wish to share. 
+
+To do the offloading, we will implement a [Cluster](https://nodejs.org/api/cluster.html). This allows creation of child processes that shares the server ports. Now rewriting our server code we have:
 
 ```js
-emailjs.send(serviceID, templateID, templateParams, userID);
-```
-`serviceID` will be assigned when configuring your service and `templateID` when setting up your template on your [admin dashboard](https://dashboard.emailjs.com/admin/).
-`useID` is optional if you used `init()`.
+import express from 'express';
+import axios from 'axios';
+import cluster from 'cluster';
+import { cpus } from 'os';
+import { fib } from './fib.js';
 
-Example:
+const PORT = process.env.PORT || 4001;
+const CPUs = cpus().length;
 
-```js
-const params = {
-name: 'John',
-reply_email: 'john@example.com',
-message: 'This is awesome!'
-};
-emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-    .then(function(response) {
-       console.log('SUCCESS!', response.status, response.text);
-    }, function(error) {
-       console.log('FAILED...', error);
+if (cluster.isMaster) {
+    console.log(`Master ${process.pid} is running`);
+
+    for (let i=0; i<CPUs; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+        cluster.fork();
     });
-```
-#### Option 2
+} else {
 
-This will automatically collect the values of the form and pass them to the specified template.
+const app = express();
+const router = express.Router();
 
-```js
-emailjs.sendForm(serviceID, templateID, templateParams, userID);
-```
+app.use(express.json());
+app.use(router);
 
-Example:
 
-```js
-import React from 'react';
-import emailjs from 'emailjs-com';
+router.get('/hello', (req, res) => {
+    res.status(200).json({message: 'Hello!'});  
+});
 
-const ContactMe = () => {
+router.get('/fib/:n', (req, res) => {
+    let { n } = req.params;
+    res.status(200).json({message: 'Hello!', fib: `fib(${n}) = ${fib(n)}`});  
+});
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
-  }
-
-  return (
-    <form onSubmit={sendEmail}>
-      <label>Email</label>
-      <input type="email" name="user_email" />
-      <label>Message</label>
-      <textarea name="message" />
-      <input type="submit" value="Send" />
-    </form>
-  );
+app.listen(PORT, () => {
+    console.log(`Server running @: http://localhost:${PORT}`);
+});
 }
 ```
+Runnig this, the server creates as many process as are CPU cores. Now, making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
 
-**The input names on the form should correspond to the names on the template.**
-If everything is setup properly, you should recieve an email from the mail address you provided when setting up your template.
+```bash
+http://localhost:4002/fib/45
+```
+And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by a different process. The biggest drawback to this is if you need to have a shared state or sessions.  
 
 *Happy coding*
 
