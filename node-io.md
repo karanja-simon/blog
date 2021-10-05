@@ -14,11 +14,9 @@ Let's look at the recursive function:
 
 ```js
 export const fib = (n) => {
-    if (n < 2) {
+    if (n < 2)
         return n;
-    } else {
-        return fib(n - 1) + fib(n - 2);
-    }
+    return fib(n - 1) + fib(n - 2);
 }
 ```
 
@@ -56,24 +54,51 @@ app.listen(PORT, () => {
 I will use Postman to interact with this simple API. Running the server and making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
 
 ```bash
-http://localhost:4001/iofib/45
+http://localhost:4001/fib/45
 ```
-Due to 
+Since the computation takes time, the Event Loop is held captive by our recursive task. Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we get a waiting indicator. This means our first request is still being processed by the Event Loop/Main Thread and until it completes and release the CPU, our second request will keep waiting.
 
-##### How do you use it then?
-Install their official SDK
-```sh
-yarn add emailjs-com
+##### How would a Multi-threaded language cope?
+I will implement the same algorithm using Java Spring Boot and see how it copes with the same. Below is the recursive method in Java:
+
+```java
+    public int fib(int n)
+    {
+        if (n <= 1)
+            return n;
+        return fib(n-1) + fib(n-2);
+    }
 ```
-Initialize the SDK
-```ts
-import emailjs from 'emailjs-com';
 
-emailjs.init("YOUR_USER_ID");
+And below is a simple Rest Controller to handle our request:
+
+```java
+@RestController
+public class FibonacciController {
+
+    @Autowired
+    private Fib fibService;
+
+    @GetMapping("/hello")
+    public ResponseEntity<String> getHello() {
+        return ResponseEntity.ok("Hello!");
+    }
+    
+    @GetMapping("/fib/{n}")
+    public ResponseEntity<Result> getFib(@PathVariable int n) {
+        int fib = fibService.fib(n);
+        return ResponseEntity.ok(new Result(n, fib));
+    }
+}
 ```
-`YOUR_USER_ID` will be available on [intergration](https://dashboard.emailjs.com/admin/integration) section on your dashboard.
-Now, sending the email is quite easy. Emailjs provides two ways of sending an email.
 
+Again, running this server and making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
+
+```bash
+http://localhost:4002/fib/45
+```
+Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different Thread and until it completes and release the CPU, our second request will keep waiting.
+ 
 > Note: Both method are rate limited at 1 request/sec.
 
 #### Option 1
