@@ -4,9 +4,11 @@
 
 #### [How much does Nodejs suck at CPU intesive tasks?](/blog/node-io)
 ##### [@admin](/whoami)
-###### Oct 05, 2021 02:20PM
-###### [#nodejs]() [#threading]() [#threading]()
-We all know of Corporate Social Responsibility (CSR), but there exists another form of social responsibility called Individual/Personal Social Responsibilty (PSR). It's defined as the primary responsibility of an individual toward family, workplace, community, and environment (both ecological and social). [See this entry from Jayashree](https://www.linkedin.com/pulse/personal-social-responsibility-psr-jayashree-venugopala). As developer, I see this as a call to build a solution/software that is free, easily acessible and relevant. It's with this philosophy that I decided to an application that could immortalize the wisdom of the Agikuyu people. Here is my effort to create a collection of 1000 Kikuyu proverbs [Read more](/blog/psr)
+###### Oct 05, 2021 04:13PM
+###### [#nodejs]() [#non-blocking]() [#threads]()
+Javascript is inherently a sigle-threaded language. This makes it increadibly easy to build applications since developers don't need to think or handle the complex multi-thread environment, it's also the biggest weakness of the language. Performing CPU intensive tasks will block the main thread and render your application unresponsive.
+
+Nodejs executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task and will lead to a bad user experience, or in a worst case; a Denial of Service. [Read more](/blog/node-io)
 
 
 
