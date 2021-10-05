@@ -1,7 +1,7 @@
 ## How much does Nodejs suck at CPU intesive computations?
 ##### *A look at the weakness of js single thread architecture*
 ###### [@admin](/whoami)
-###### Oct 5, 2021 04:13PM
+###### Oct 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
 
 Javascript is inherently a sigle-threaded language. This makes it increadibly easy to build applications since developers don't need to think or handle the complex multi-thread environment, it's also the biggest weakness of the language. Performing CPU intensive tasks will block the main thread and render your application unresponsive.
