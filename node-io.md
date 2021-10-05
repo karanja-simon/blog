@@ -62,12 +62,11 @@ Since the computation takes time, the Event Loop is held captive by our recursiv
 I will implement the same algorithm using Java Spring Boot and see how it copes with the same. Below is the recursive method in Java:
 
 ```java
-    public int fib(int n)
-    {
-        if (n <= 1)
-            return n;
-        return fib(n-1) + fib(n-2);
-    }
+public int fib(int n){
+    if (n <= 1)
+         return n;
+    return fib(n-1) + fib(n-2);
+}
 ```
 
 And below is a simple Rest Controller to handle our request:
@@ -97,11 +96,11 @@ Again, running this server and making a `GET` request for a 45'th term of the Fi
 ```bash
 http://localhost:4002/fib/45
 ```
-Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different Thread and until it completes and release the CPU, our second request will keep waiting.
- 
-> Note: Both method are rate limited at 1 request/sec.
+Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different thread, meaning for every request, a new thread is spun to handle it.
 
-#### Option 1
+### What can we do to improve this on Nodejs?
+#### Option 1: Delegate the intesive task to another process/handler
+We know Nodejs is suited for quick and fast tasks that does not hold-up the CPU
 
 ```js
 emailjs.send(serviceID, templateID, templateParams, userID);
