@@ -1,5 +1,5 @@
 ## How much does Nodejs suck at CPU intesive computations?
-##### *A look at the weakness of js single thread model*
+##### *A look at the weakness of js single thread architecture*
 ###### [@admin](/whoami)
 ###### Oct 5, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
@@ -53,7 +53,12 @@ app.listen(PORT, () => {
 });
 ```
 
-If 
+I will use Postman to interact with this simple API. Running the server and making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
+
+```bash
+http://localhost:4001/iofib/45
+```
+Due to 
 
 ##### How do you use it then?
 Install their official SDK
