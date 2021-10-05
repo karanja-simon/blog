@@ -5,11 +5,12 @@
 ###### [#nodejs]() [#non-blocking]() [#threads]()
 
 Javascript is inherently a sigle-threaded language. This makes it increadibly easy to build applications since developers don't need to think or handle the complex multi-thread environment, it's also the biggest weakness of the language. Performing CPU intensive tasks will block the main thread and render your application unresponsive.
-This has a trickle down effect on Nodejs. If the Event Loop (main thread) is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously will lead to a bad user experience and possibly loss of revenue.
-##### But how does it work?
-From the official emailjs docs, this is what they say:
+Nodejs . If the Event Loop (main thread) is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously will lead to a bad user experience and possibly loss of revenue.
 
-> EmailJS helps sending emails using client side technologies only. No server is required – just connect EmailJS to one of the supported email services, create an email template and use our Javascript library to trigger an email.
+##### But how can this happen?
+From the official Nodejs documentation, this can happen due to:
+* Performance: If you regularly perform heavyweight activity on either type of thread, the throughput (requests/second) of your server will suffer.
+* Security: If it is possible that for certain input one of your threads might block, a malicious client could submit this "evil input", make your threads block, and keep them from working on other clients. This would be a Denial of Service attack.
 
 If you ever used [Nodemailer](https://nodemailer.com/) on Node.js, you usually create an SMTP service, say from Gmail, then a create a transport from this SMTP service and finally send the mail with the defined transport object. The emailjs uses the same concept (at least, to my understanding), but now instead of building your own server to do this, they provide you with an API, via thier SDK to achieve the same. Of course their service is not free and comes with a risk of allowing a 3'rd party to send emails on your behalf, but it's a novel ideal. They do offer a free 200 emails credit every month should that suit your need.
 
