@@ -1,4 +1,15 @@
 
+### Oct 2021
+---
+
+#### [How much does Nodejs suck at CPU intesive tasks?](/blog/node-io)
+##### [@admin](/whoami)
+###### Oct 05, 2021 02:20PM
+###### [#nodejs]() [#threading]() [#threading]()
+We all know of Corporate Social Responsibility (CSR), but there exists another form of social responsibility called Individual/Personal Social Responsibilty (PSR). It's defined as the primary responsibility of an individual toward family, workplace, community, and environment (both ecological and social). [See this entry from Jayashree](https://www.linkedin.com/pulse/personal-social-responsibility-psr-jayashree-venugopala). As developer, I see this as a call to build a solution/software that is free, easily acessible and relevant. It's with this philosophy that I decided to an application that could immortalize the wisdom of the Agikuyu people. Here is my effort to create a collection of 1000 Kikuyu proverbs [Read more](/blog/psr)
+
+
+
 ### Apr 2021
 ---
 
