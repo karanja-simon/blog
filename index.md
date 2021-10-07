@@ -2,7 +2,7 @@
 ### Oct 2021
 ---
 
-#### [Nodejs and CPU intesive tasks](/blog/nodejs-cpu-bound-tasks)
+#### [Nodejs and CPU intensive tasks](/blog/nodejs-cpu-bound-tasks)
 ##### [@admin](/whoami)
 ###### Oct 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
