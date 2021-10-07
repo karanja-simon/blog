@@ -2,13 +2,13 @@
 ### Oct 2021
 ---
 
-#### [How much does Nodejs suck at CPU intesive tasks?](/blog/node-io)
+#### [Nodejs and CPU intesive tasks](/blog/nodejs-cpu-bound-tasks)
 ##### [@admin](/whoami)
 ###### Oct 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
 Javascript is inherently a sigle-threaded language. This makes it increadibly easy to build applications since developers don't need to think or handle the complex multi-thread environment, it's also the biggest weakness of the language per se. Performing a CPU intensive tasks will block the main thread and render your application unresponsive.
 
-Nodejs executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task to yeild, therefore leading to a bad user experience, or in a worst case; a Denial of Service. [Read more](/blog/node-io)
+Nodejs executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task to yeild, therefore leading to a bad user experience, or in a worst case; a Denial of Service. [Read more](/blog/nodejs-cpu-bound-tasks)
 
 ### Apr 2021
 ---
