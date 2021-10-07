@@ -104,9 +104,105 @@ Since we don't have the liberty of running our js code here, let's see what we c
 #### Offloading: The Worker Pool
 We know Nodejs excels in I/O-bound tasks, but suffers on CPU-bound operations. One approach to overcome this, is by offloading task to Worker Pool, the second kind of threading the Nodejs environment offers. 
 
-To do the offloading, we will implement a [Cluster](https://nodejs.org/api/cluster.html) from the `cluster` module. A cluster allows creation of child processes that shares the server ports. The primary use case for the cluster module is networking, but it can be used for other use cases requiring worker processes.
+We will look at two approaches; a [Cluster](https://nodejs.org/api/cluster.html) from the `cluster` module and a [Child Process](https://nodejs.org/api/child_process.html) from `child_process` module. 
 
- Now rewriting our server code we have:
+#### Child Process
+This allow for spwaning indepedent subprocess. These subprocesses are indepedent processes with their own memory and Event Loop. The `child_process` API offers various methods of spwaning new processes. Of interest here is the `child_process.fork()` which spawns a new Nodejs process with all the neccessary mechanisms (IPC) of passing the messages between itself and the parent process.
+
+The `child_process.fork()` takes 3 arguments, but the mandatory is the modulePath, which is the module to run in the child. 
+First, we will create the child module which will contain our recursive function. I will call it `fib-fork.js`. Here is it's contents:
+
+```js
+
+process.send('ready');
+
+process.on("message", (message) => {
+  console.log(`Message from main.js: ${message}`);
+  process.send(fib(message));
+  process.exit(0);
+});
+
+process.on("error", (err) => {
+  console.log('Process encountered error: ', err);
+});
+
+process.on("exit", (message) => {
+  console.log('Process exited');
+});
+
+const fib = (n) => {
+  if (n < 2)
+    return n;
+  return fib(n - 1) + fib(n - 2);
+}
+```
+
+We need to modify the server file to accomodate the new changes:
+
+```js
+import express from 'express';
+import { fork } from 'child_process';
+import path from 'path';
+
+
+const __dirname = path.resolve();
+
+const PORT = process.env.PORT || 8000;
+
+const app = express();
+app.use(express.json());
+
+const router = express.Router();
+
+app.use(router);
+
+router.get('/hello', (req, res) => {
+    res.status(200).json({ message: 'Hello!' });
+});
+
+router.get('/fib/:n', (req, res) => {
+    let { n } = req.params;
+
+    const child = fork(path.join(__dirname, 'fib-fork.js'));
+
+    child.on('message', message => {
+        // Check if the child is ready to receive 
+        // messages. This is neccessary when using
+        // es6 module
+        if (message === 'ready') {
+            child.send(n);
+        } else {
+            res.status(200).json({ message: 'Hello!', fib: `fib(${n}) = ${message}` });
+        }
+    });
+
+    child.on('error', message => {
+        console.log(`Err: ${message}`);
+    });
+
+    child.on('close', code => {
+        console.log("child process exited with code " + code);
+    });
+});
+
+
+app.listen(PORT, () => {
+    console.log(`Server running @: http://localhost:${PORT}`);
+});
+
+```
+Runnig this, the server creates as many process as are CPU cores. Now, making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
+
+```bash
+http://localhost:4002/fib/45
+```
+And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by a different *process*.
+
+#### Cluster
+
+Perhaps this is the most easiest and by far the most familiar implementation.
+
+Now rewriting our server code we have:
 
 ```js
 import express from 'express';
