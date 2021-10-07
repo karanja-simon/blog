@@ -4,12 +4,12 @@
 ###### Oct 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
 
-Javascript is inherently a sigle-threaded language. This makes it increadibly easy to build applications since developers don't need to think or handle the complex multi-thread environment, it's also the biggest weakness of the language. Performing CPU intensive tasks will block the main thread and render your application unresponsive.
+Nodejs executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task to yeild, therefore leading to a bad user experience, or in a worst case; a Denial of Service.
 
-Nodejs executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task and will lead to a bad user experience, or in a worst case; a Denial of Service.
+It's up to the developer to offload these CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). These will create new processes with their own memory, Event Loop & V8 instance. This is an expensive operation in terms OS resources and this is why the [Worker Threads](https://nodejs.org/api/worker_threads.html) were born. (We will look at Worker Threads in another article)
 
-##### Let's see this in action.
-Let's build a simple Nodejs/Express server that calculates the Fibonacci of an n'th term. I will implement a worst-case time-complexity algorithm for calculating Fibonacci using recursion.
+##### How do we block the Event Loop?
+Let's build a simple Nodejs/Express server that calculates the Fibonacci of an n'th term. I will implement a linear time-complexity algorithm for calculating Fibonacci. As n becomes larger, so do the time to calculate the Fibonacci number.
 Let's look at the recursive function:
 
 ```js
@@ -57,9 +57,10 @@ I will use Postman to interact with this simple API. Running the server and maki
 http://localhost:4001/fib/45
 ```
 Since the computation takes time, the Event Loop is held captive by our recursive task. Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we get a waiting indicator. This means our first request is still being processed by the Event Loop/Main Thread and until it completes and release the CPU, our second request will keep waiting.
+This is a classic CPU-bound operation that blocks the Event Loop and makes our server non responsive. Let's look at the competition.
 
 ##### How would a Multi-threaded system cope?
-I will implement the same algorithm using Java Spring Boot with Apache Tomcat and see how it copes with the same. Below is the recursive method in Java:
+I will implement the same algorithm using Java Spring Boot with Apache Tomcat and see how it copes with the same. Below is the same recursive method in Java:
 
 ```java
 public int fib(int n){
@@ -96,15 +97,16 @@ Again, running this server and making a `GET` request for a 45'th term of the Fi
 ```bash
 http://localhost:4002/fib/45
 ```
-Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different thread, meaning for every request, a new thread is spun to handle it. This is so called one-thread-per client system, where each client is assigned its own thread. This is the implementation in many servers like Apache. 
+Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different thread, meaning for every request, a new thread is spun to handle it. This is so called one-thread-per client system, where each client is assigned its own thread. This is the implementation in many servers like Apache.
+Since we don't have the liberty of running our js code here, let's see what we can do on Nodejs platform to improve our situation.
 
 ### What can we do to improve this on Nodejs?
-#### Offloading: Worker Pool
-We know Nodejs excels in I/O-bound tasks, but suffers on complex calculations. One approach to overcome this, is by offloading task to Worker Pool, the second kind of threading the Nodejs environment offers. The downside of this, is the communication overhead between the Worker and Event Loop. From [Nodejs docs](https://nodejs.org/api/cluster.html):
+#### Offloading: The Worker Pool
+We know Nodejs excels in I/O-bound tasks, but suffers on CPU-bound operations. One approach to overcome this, is by offloading task to Worker Pool, the second kind of threading the Nodejs environment offers. 
 
->  From a Worker, you cannot manipulate a JavaScript object in the Event Loop's namespace. Instead, you have to serialize and deserialize any objects you wish to share. 
+To do the offloading, we will implement a [Cluster](https://nodejs.org/api/cluster.html) from the `cluster` module. A cluster allows creation of child processes that shares the server ports. The primary use case for the cluster module is networking, but it can be used for other use cases requiring worker processes.
 
-To do the offloading, we will implement a [Cluster](https://nodejs.org/api/cluster.html). This allows creation of child processes that shares the server ports. Now rewriting our server code we have:
+ Now rewriting our server code we have:
 
 ```js
 import express from 'express';
@@ -154,7 +156,8 @@ Runnig this, the server creates as many process as are CPU cores. Now, making a 
 ```bash
 http://localhost:4002/fib/45
 ```
-And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by a different process. The biggest drawback to this is if you need to have a shared state or sessions.  
+And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by a different *process*.
+As noted above, this approach is not cheap, since processes are not kind to OS resources pool. A better approach is the Worker Threads from the `worker_threads` module, which allows execution in parallel, and are light-weight. 
 
 *Happy coding*
 
