@@ -4,7 +4,7 @@
 
 #### [Nodejs and CPU intensive tasks](/blog/nodejs-cpu-bound-tasks)
 ##### [@admin](/whoami)
-###### Oct 05, 2021 04:13PM
+###### Nov 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
 Javascript is inherently a sigle-threaded language. This makes it increadibly easy to build applications since developers don't need to think or handle the complex multi-thread environment, it's also the biggest weakness of the language per se. Performing a CPU intensive tasks will block the main thread and render your application unresponsive.
 
