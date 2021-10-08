@@ -1,4 +1,4 @@
-## How much does Nodejs suck at CPU intesive computations?
+## Nodejs and CPU intensive tasks?
 ##### *A look at Nodejs CPU-bound task handling*
 ###### [@admin](/whoami)
 ###### Oct 05, 2021 04:13PM
@@ -107,7 +107,7 @@ We know Nodejs excels in I/O-bound tasks, but suffers on CPU-bound operations. O
 We will look at two approaches; a [Cluster](https://nodejs.org/api/cluster.html) from the `cluster` module and a [Child Process](https://nodejs.org/api/child_process.html) from `child_process` module. 
 
 #### Child Process
-This allow for spwaning indepedent subprocess. These subprocesses are indepedent processes with their own memory and Event Loop. The `child_process` API offers various methods of spwaning new processes. Of interest here is the `child_process.fork()` which spawns a new Nodejs process with all the neccessary mechanisms (IPC) of passing the messages between itself and the parent process.
+This allow for spwaning indepedent subprocess. These subprocesses are indepedent processes with their own memory and Event Loop. The `child_process` API offers various methods of spwaning new processes. Of interest here is the `child_process.fork()` which spawns a new Nodejs process with all the neccessary mechanisms (IPC) for passing messages between itself and the parent process.
 
 The `child_process.fork()` takes 3 arguments, but the mandatory is the modulePath, which is the module to run in the child. 
 First, we will create the child module which will contain our recursive function. I will call it `fib-fork.js`. Here is it's contents:
@@ -117,7 +117,7 @@ First, we will create the child module which will contain our recursive function
 process.send('ready');
 
 process.on("message", (message) => {
-  console.log(`Message from main.js: ${message}`);
+  console.log(`Message from Parent: ${message}`);
   process.send(fib(message));
   process.exit(0);
 });
@@ -191,16 +191,25 @@ app.listen(PORT, () => {
 });
 
 ```
-Runnig this, the server creates as many process as are CPU cores. Now, making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
+> If using ES6 module, like I have done, then it's necessary for the child to message the parent (although also recommended on commonjs) once it's ready to recieve messages. You can check this issue [here](https://github.com/nodejs/node/issues/34785).
+
+Runnig this, and making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
 
 ```bash
 http://localhost:4002/fib/45
 ```
-And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by a different *process*.
+And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests has spwaned a new process to handle our task, free the Event Loop to respond to other request. If you hit the `/fin/n` endpoint again whilst the first request is still running, another process will be spawned to handle that request, and once done, it will message the parent will the result of the computation and then exit.
+
+If look keenly, you might see why this approach although noble might not be kind enough on system resources as requests increases. With every request to `fib/n` endpoint, a new Nodejs process with it's own memory, Event Loop and all the bells and whistles will be spwaned and eat into our OS resources. A better approach is the use of Worker Threads, that we will look at on another article.
 
 #### Cluster
 
-Perhaps this is the most easiest and by far the most familiar implementation.
+Perhaps this is the most easiest and by far the most familiar implementation on the internet. If you searched for Nodejs concurency, you will probably see this. The cluster module allows easy creation of child processes that all share server port. 
+Form official Nodejs, 
+
+> A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+
+Basically, a cluster will spwan as many processes as are the CPUs and load balance requests to these processes. Care has to be taken not to spawn more processes than the number of cores availabe on your CPU.
 
 Now rewriting our server code we have:
 
@@ -247,14 +256,15 @@ app.listen(PORT, () => {
 });
 }
 ```
-Runnig this, the server creates as many process as are CPU cores. Now, making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
+That's all. Runnig this, the server creates as many process as are CPU cores. Now, making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
 
 ```bash
 http://localhost:4002/fib/45
 ```
-And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by a different *process*.
-As noted above, this approach is not cheap, since processes are not kind to OS resources pool. A better approach is the Worker Threads from the `worker_threads` module, which allows execution in parallel, and are light-weight. 
+And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by different *processes*.
 
-*Happy coding*
+As noted above, this approach is not cheap, since processes are not kind to OS resources pool. Nodejs team has since introduces a better approach called the Worker Threads from the `worker_threads` module, which allows execution in parallel, and are light-weight. We will look at this on the next article.
+
+*Cheers. Happy coding*
 
 
