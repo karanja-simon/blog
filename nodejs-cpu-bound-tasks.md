@@ -200,7 +200,7 @@ http://localhost:4002/fib/45
 ```
 And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests has spwaned a new process to handle our task and free the Event Loop to respond to other request. If you hit the `/fin/n` endpoint again whilst the first request is still running, another process will be spawned to handle that request, and once done, it will message the parent will the result of the computation and then exit.
 
-If look keenly, you might see why this approach although noble might not be kind enough on system resources as requests increases. With every request to `fib/n` endpoint, a new Nodejs process with it's own memory, Event Loop and all the bells and whistles will be spwaned and eat into our OS resources. A better approach is the use of Worker Threads, that we will look at on another article.
+If you look keenly, you might see why this approach although noble might not be kind enough on system resources as requests increases. With every request to `fib/n` endpoint, a new Nodejs process with it's own memory, Event Loop and all the bells and whistles will be spwaned and eat into our OS resources. A better approach is the use of Worker Threads, that we will look at on another article.
 
 #### Cluster
 
