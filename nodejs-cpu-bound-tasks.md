@@ -204,7 +204,7 @@ If you look keenly, you might see why this approach although noble might not be 
 
 #### Cluster
 
-Perhaps this is the most easiest and by far the most familiar implementation on the internet. If you searched for Nodejs concurency, you will probably see this. The cluster module allows easy creation of child processes that all share server port. 
+Perhaps this is the most easiest and by far the most familiar implementation on the internet. If you searched for Nodejs concurrency/parallelism, you will probably see this. The cluster module allows easy creation of child processes that all share server port. 
 Form official Nodejs, 
 
 > A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
