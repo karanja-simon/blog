@@ -1,7 +1,7 @@
 ## Nodejs and CPU intensive tasks?
 ##### *A look at Nodejs CPU-bound task handling*
 ###### [@admin](/whoami)
-###### Oct 05, 2021 04:13PM
+###### Nov 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
 
 Nodejs executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task to yeild, therefore leading to a bad user experience, or in a worst case; a Denial of Service.
