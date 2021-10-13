@@ -6,12 +6,12 @@
 
 [Previously](/nodejs), we looked at offloading CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). In this article, we will look at [Worker Threads](https://nodejs.org/api/worker_threads.html) and why they are more desirable than previous approach.
 
-Worker threads are provided by the `worker_thread` module, introduced in Node.js version 10. These threads executes in parallel, and unlike `child_process` or `cluster`, they can share memory. Threads lives inside a process, therefore should it die, it will also terminate the threads it holds. This is different from Cluster or Child process, where if one process dies, others can keep executing.
+Worker threads are provided by the `worker_thread` module, introduced in Node.js version 10. These threads executes in parallel, and unlike `child_process` or `cluster`, they can share memory. They, therefore do not need the expensive IPC mechanism to communicate with their parent process. Each worker is connected to it's parent worker via a message channel. The child worker writes to the message channel using `parentPort.postMessage()` function and the parent worker writes to the message channel by invoking `worker.postMessage()` function on the worker instance. Threads lives inside a process, therefore should it die, it will also terminate the threads it holds. This is different from Cluster or Child process, where if one process dies, others can keep executing.
 
 > Note: Workers (threads) are useful for performing CPU-intensive tasks. They are not meant for I/O-intensive work, since Node.js built-in asynchronous I/O operations are more efficient.
 
-##### How do we block the Event Loop?
-Let's build a simple Nodejs/Express server that calculates the Fibonacci of an n'th term. I will implement a linear time-complexity algorithm for calculating Fibonacci. As n becomes larger, so do the time to calculate the Fibonacci number.
+##### Some code..
+Let's borrow the code from the [previous]() article. It's a simple Nodejs/Express server that calculates the Fibonacci of an n'th term with a linear time-complexity algorithm. As n becomes larger, so do the time to calculate the Fibonacci number.
 Let's look at the recursive function:
 
 ```js
@@ -53,101 +53,26 @@ app.listen(PORT, () => {
 });
 ```
 
-I will use Postman to interact with this simple API. Running the server and making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
+Running the server and making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
 
 ```bash
-http://localhost:4001/fib/45
+curl http://localhost:4001/fib/45
 ```
-Since the computation takes time, the Event Loop is held captive by our recursive task. Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we get a waiting indicator. This means our first request is still being processed by the Event Loop/Main Thread and until it completes and release the CPU, our second request will keep waiting.
-This is a classic CPU-bound operation that blocks the Event Loop and makes our server non responsive. Let's look at the competition.
+Since the computation takes time, the Event Loop is held captive by our recursive task. Let's see this in action. Opening another terminal and making a curl `GET` request on the `/hello` endpoint, we get no immediate response. This means our first request is still being processed by the Event Loop/Main Thread and until it completes and release the CPU, our second request will keep waiting.
+This is a classic CPU-bound operation that blocks the Event Loop and makes our server non responsive.
+ 
 
-##### How would a Multi-threaded system cope?
-I will implement the same algorithm using Java Spring Boot with Apache Tomcat and see how it copes with the same. Below is the same recursive method in Java:
-
-```java
-public int fib(int n){
-    if (n <= 1)
-         return n;
-    return fib(n-1) + fib(n-2);
-}
-```
-
-And below is a simple Rest Controller to handle our request:
-
-```java
-@RestController
-public class FibonacciController {
-
-    @Autowired
-    private Fib fibService;
-
-    @GetMapping("/hello")
-    public ResponseEntity<String> getHello() {
-        return ResponseEntity.ok("Hello!");
-    }
-    
-    @GetMapping("/fib/{n}")
-    public ResponseEntity<Result> getFib(@PathVariable int n) {
-        int fib = fibService.fib(n);
-        return ResponseEntity.ok(new Result(n, fib));
-    }
-}
-```
-
-Again, running this server and making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
-
-```bash
-http://localhost:4002/fib/45
-```
-Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different thread, meaning for every request, a new thread is spun to handle it. This is so called one-thread-per client system, where each client is assigned its own thread. This is the implementation in many servers like Apache.
-Since we don't have the liberty of running our js code here, let's see what we can do on Nodejs platform to improve our situation.
-
-### What can we do to improve this on Nodejs?
-#### Offloading: The Worker Pool
-We know Nodejs excels in I/O-bound tasks, but suffers on CPU-bound operations. One approach to overcome this, is by offloading task to Worker Pool, the second kind of threading the Nodejs environment offers. 
-
-We will look at two approaches; a [Cluster](https://nodejs.org/api/cluster.html) from the `cluster` module and a [Child Process](https://nodejs.org/api/child_process.html) from `child_process` module. 
-
-#### Child Process
-This allow for spwaning indepedent subprocess. These subprocesses are indepedent processes with their own memory and Event Loop. The `child_process` API offers various methods of spwaning new processes. Of interest here is the `child_process.fork()` which spawns a new Nodejs process with all the neccessary mechanisms (IPC) for passing messages between itself and the parent process.
+#### The Worker Threads.
 
 The `child_process.fork()` takes 3 arguments, but the mandatory is the modulePath, which is the module to run in the child. 
 First, we will create the child module which will contain our recursive function. I will call it `fib-fork.js`. Here is it's contents:
 
-```js
 
-process.send('ready');
-
-process.on("message", (message) => {
-  console.log(`Message from Parent: ${message}`);
-  process.send(fib(message));
-  process.exit(0);
-});
-
-process.on("error", (err) => {
-  console.log('Process encountered error: ', err);
-});
-
-process.on("exit", (message) => {
-  console.log('Process exited');
-});
-
-const fib = (n) => {
-  if (n < 2)
-    return n;
-  return fib(n - 1) + fib(n - 2);
-}
-```
-
-We need to modify the server file to accomodate the new changes:
+Now rewriting our server code we have:
 
 ```js
 import express from 'express';
-import { fork } from 'child_process';
-import path from 'path';
-
-
-const __dirname = path.resolve();
+import { fibWorker } from './fib-worker.js';
 
 const PORT = process.env.PORT || 8000;
 
@@ -162,101 +87,19 @@ router.get('/hello', (req, res) => {
     res.status(200).json({ message: 'Hello!' });
 });
 
-router.get('/fib/:n', (req, res) => {
+router.get('/fib/:n', async (req, res) => {
     let { n } = req.params;
 
-    const child = fork(path.join(__dirname, 'fib-fork.js'));
+    const result = await fibWorker(n);
 
-    child.on('message', message => {
-        // Check if the child is ready to receive 
-        // messages. This is neccessary when using
-        // es6 module
-        if (message === 'ready') {
-            child.send(n);
-        } else {
-            res.status(200).json({ message: 'Hello!', fib: `fib(${n}) = ${message}` });
-        }
-    });
+    res.status(200).json({ message: 'Hello!', fib: `fib(${n}) = ${result}` });
 
-    child.on('error', message => {
-        console.log(`Err: ${message}`);
-    });
-
-    child.on('close', code => {
-        console.log("child process exited with code " + code);
-    });
 });
 
 
 app.listen(PORT, () => {
     console.log(`Server running @: http://localhost:${PORT}`);
 });
-
-```
-> If using ES6 module, like I have done, then it's necessary for the child to message the parent (although also recommended on commonjs) once it's ready to recieve messages. You can check this issue [here](https://github.com/nodejs/node/issues/34785).
-
-Runnig this, and making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
-
-```bash
-http://localhost:4002/fib/45
-```
-And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests has spwaned a new process to handle our task and free the Event Loop to respond to other request. If you hit the `/fin/n` endpoint again whilst the first request is still running, another process will be spawned to handle that request, and once done, it will message the parent will the result of the computation and then exit.
-
-If you look keenly, you might see why this approach although noble might not be kind enough on system resources as requests increases. With every request to `fib/n` endpoint, a new Nodejs process with it's own memory, Event Loop and all the bells and whistles will be spwaned and eat into our OS resources. A better approach is the use of Worker Threads, that we will look at on another article.
-
-#### Cluster
-
-Perhaps this is the most easiest and by far the most familiar implementation on the internet. If you searched for Nodejs concurrency/parallelism, you will probably see this. The cluster module allows easy creation of child processes that all share server port. 
-Form official Nodejs, 
-
-> A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
-
-Basically, a cluster will spwan as many processes as are the CPUs and load balance requests to these processes. Care has to be taken not to spawn more processes than the number of cores availabe on your CPU.
-
-Now rewriting our server code we have:
-
-```js
-import express from 'express';
-import axios from 'axios';
-import cluster from 'cluster';
-import { cpus } from 'os';
-import { fib } from './fib.js';
-
-const PORT = process.env.PORT || 4001;
-const CPUs = cpus().length;
-
-if (cluster.isMaster) {
-    console.log(`Master ${process.pid} is running`);
-
-    for (let i=0; i<CPUs; i++) {
-        cluster.fork();
-    }
-
-    cluster.on('exit', (worker, code, signal) => {
-        cluster.fork();
-    });
-} else {
-
-const app = express();
-const router = express.Router();
-
-app.use(express.json());
-app.use(router);
-
-
-router.get('/hello', (req, res) => {
-    res.status(200).json({message: 'Hello!'});  
-});
-
-router.get('/fib/:n', (req, res) => {
-    let { n } = req.params;
-    res.status(200).json({message: 'Hello!', fib: `fib(${n}) = ${fib(n)}`});  
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running @: http://localhost:${PORT}`);
-});
-}
 ```
 That's all. Runnig this, the server creates as many process as are CPU cores. Now, making a `GET` request for a 45'th term of the Fibonacci i.e `n = 45` on the `/fib` endpoint: 
 
