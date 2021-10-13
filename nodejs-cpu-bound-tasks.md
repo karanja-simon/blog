@@ -1,4 +1,4 @@
-## Node.js and CPU intensive tasks?
+## Node.js and CPU intensive tasks.
 ##### *A look at Node.js CPU-bound task handling*
 ###### [@admin](/whoami)
 ###### Nov 05, 2021 04:13PM
