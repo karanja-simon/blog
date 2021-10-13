@@ -1,12 +1,14 @@
-## Nodejs and CPU intensive tasks?
-##### *A look at Nodejs CPU-bound task handling*
+## Node.js Worker Threads
+##### *A look at Node.js parallelism with worker threads*
 ###### [@admin](/whoami)
-###### Nov 05, 2021 04:13PM
-###### [#nodejs]() [#non-blocking]() [#threads]()
+###### OCT 06, 2021 02:10PM
+###### [#nodejs]() [#threads]()
 
-Nodejs executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task to yeild, therefore leading to a bad user experience, or in a worst case; a Denial of Service.
+[Previously](), we looked at offloading CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). In this article, we will look at [Worker Threads](https://nodejs.org/api/worker_threads.html) and why they are more desirable than previous approach.
 
-It's up to the developer to offload these CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). These will create new processes with their own memory, Event Loop & V8 instance. This is an expensive operation in terms OS resources and this is why the [Worker Threads](https://nodejs.org/api/worker_threads.html) were born. (We will look at Worker Threads in another article)
+Worker threads are provided by the `worker_thread` module, introduced in Node.js version 10. These threads executes in parallel, and unlike `child_process` or `cluster`, they can share memory. Threads lives inside a process, therefore should it die, it will also terminate the threads it holds. This is different from Cluster or Child process, where if one process dies, others can keep executing.
+
+> Note: Workers (threads) are useful for performing CPU-intensive tasks. They are not meant for I/O-intensive work, since Node.js built-in asynchronous I/O operations are more efficient.
 
 ##### How do we block the Event Loop?
 Let's build a simple Nodejs/Express server that calculates the Fibonacci of an n'th term. I will implement a linear time-complexity algorithm for calculating Fibonacci. As n becomes larger, so do the time to calculate the Fibonacci number.
