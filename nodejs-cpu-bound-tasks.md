@@ -4,6 +4,8 @@
 ###### Nov 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
 
+Javascript is inherently a sigle-threaded language. This makes it increadibly easy to build applications since developers don't need to think or handle the complex multi-thread environment, it's also the biggest weakness of the language per se. Performing a CPU intensive tasks will block the main thread and render your application unresponsive.
+
 Node.js executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task to yeild, therefore leading to a bad user experience, or in a worst case; a Denial of Service.
 
 It's up to the developer to offload these CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). These will create new processes with their own memory, Event Loop & V8 instance. This is an expensive operation in terms OS resources and this is why the [Worker Threads](https://nodejs.org/api/worker_threads.html) were born. (We will look at Worker Threads in another article)
