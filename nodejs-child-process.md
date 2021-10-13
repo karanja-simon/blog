@@ -4,7 +4,7 @@
 ###### OCT 06, 2021 02:10PM
 ###### [#nodejs]() [#threads]()
 
-[Previously](), we looked at offloading CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). In this article, we will look at [Worker Threads](https://nodejs.org/api/worker_threads.html) and why they are more desirable than previous approach.
+[Previously](/nodejs), we looked at offloading CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). In this article, we will look at [Worker Threads](https://nodejs.org/api/worker_threads.html) and why they are more desirable than previous approach.
 
 Worker threads are provided by the `worker_thread` module, introduced in Node.js version 10. These threads executes in parallel, and unlike `child_process` or `cluster`, they can share memory. Threads lives inside a process, therefore should it die, it will also terminate the threads it holds. This is different from Cluster or Child process, where if one process dies, others can keep executing.
 
