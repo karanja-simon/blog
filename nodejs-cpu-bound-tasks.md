@@ -1,15 +1,15 @@
-## Nodejs and CPU intensive tasks?
-##### *A look at Nodejs CPU-bound task handling*
+## Node.js and CPU intensive tasks?
+##### *A look at Node.js CPU-bound task handling*
 ###### [@admin](/whoami)
 ###### Nov 05, 2021 04:13PM
 ###### [#nodejs]() [#non-blocking]() [#threads]()
 
-Nodejs executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task to yeild, therefore leading to a bad user experience, or in a worst case; a Denial of Service.
+Node.js executes JavaScript code in the Event Loop (main thread) just like the browsers do, but it also offers a Worker Pool to handle expensive tasks like I/O. If the Event Loop (main thread) or a Worker thread is held by a long running task, say a CPU intensive task, then it cannot respond to requests from other clients and it's said to be blocked. This obviously leads to subsequent requests waiting for the *greedy* task to yeild, therefore leading to a bad user experience, or in a worst case; a Denial of Service.
 
 It's up to the developer to offload these CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). These will create new processes with their own memory, Event Loop & V8 instance. This is an expensive operation in terms OS resources and this is why the [Worker Threads](https://nodejs.org/api/worker_threads.html) were born. (We will look at Worker Threads in another article)
 
 ##### How do we block the Event Loop?
-Let's build a simple Nodejs/Express server that calculates the Fibonacci of an n'th term. I will implement a linear time-complexity algorithm for calculating Fibonacci. As n becomes larger, so do the time to calculate the Fibonacci number.
+Let's build a simple Node.js/Express server that calculates the Fibonacci of an n'th term. I will implement a linear time-complexity algorithm for calculating Fibonacci. As n becomes larger, so do the time to calculate the Fibonacci number.
 Let's look at the recursive function:
 
 ```js
@@ -20,7 +20,7 @@ export const fib = (n) => {
 }
 ```
 
-And below is simple Nodejs/Express server.
+And below is simple Node.js/Express server.
 
 ```js
 import express from 'express';
@@ -98,11 +98,12 @@ Again, running this server and making a `GET` request for a 45'th term of the Fi
 http://localhost:4002/fib/45
 ```
 Opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we immediately get a `Hello!` response. This means our first request is handled by a different thread, meaning for every request, a new thread is spun to handle it. This is so called one-thread-per client system, where each client is assigned its own thread. This is the implementation in many servers like Apache.
-Since we don't have the liberty of running our js code here, let's see what we can do on Nodejs platform to improve our situation.
+Since we don't have the liberty of running our js code here, let's see what we can do on Node.js platform to improve our situation.
 
-### What can we do to improve this on Nodejs?
+### What can we do to improve this on Node.js?
+
 #### Offloading: The Worker Pool
-We know Nodejs excels in I/O-bound tasks, but suffers on CPU-bound operations. One approach to overcome this, is by offloading task to Worker Pool, the second kind of threading the Nodejs environment offers. 
+We know Node.js excels in I/O-bound tasks, but suffers on CPU-bound operations. One approach to overcome this, is by offloading task to Worker Pool, the second kind of threading the Nodejs environment offers. 
 
 We will look at two approaches; a [Cluster](https://nodejs.org/api/cluster.html) from the `cluster` module and a [Child Process](https://nodejs.org/api/child_process.html) from `child_process` module. 
 
@@ -205,7 +206,7 @@ If you look keenly, you might see why this approach although noble might not be 
 #### Cluster
 
 Perhaps this is the most easiest and by far the most familiar implementation on the internet. If you searched for Nodejs concurrency/parallelism, you will probably see this. The cluster module allows easy creation of child processes that all share server port. 
-Form official Nodejs, 
+Form official Node.js, 
 
 > A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
@@ -263,7 +264,7 @@ http://localhost:4002/fib/45
 ```
 And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by different *processes*.
 
-As noted above, this approach is not cheap, since processes are not kind to OS resources pool. Nodejs team has since introduces a better approach called the Worker Threads from the `worker_threads` module, which allows execution in parallel, and are light-weight. We will look at this on the next article.
+As noted above, this approach is not cheap, since processes are not kind to OS resources pool. Node.js team has since introduces a better approach called the Worker Threads from the `worker_threads` module, which allows execution in parallel, and are light-weight. We will look at this on the next article.
 
 *Cheers. Happy coding*
 
