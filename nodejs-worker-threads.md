@@ -4,14 +4,14 @@
 ###### OCT 06, 2021 02:10PM
 ###### [#nodejs]() [#threads]()
 
-[Previously](/nodejs), we looked at offloading CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). In this article, we will look at [Worker Threads](https://nodejs.org/api/worker_threads.html) and why they are more desirable than previous approach.
+[Previously](/blog/nodejs-cpu-bound-tasks), we looked at offloading CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). In this article, we will look at [Worker Threads](https://nodejs.org/api/worker_threads.html) and why they are more desirable than previous approach.
 
 Worker threads are provided by the `worker_thread` module, introduced in Node.js version 10. These threads executes in parallel, and unlike `child_process` or `cluster`, they can share memory. They, therefore do not need the expensive IPC mechanism to communicate with their parent process. Each worker is connected to it's parent worker via a message channel. The child worker writes to the message channel using `parentPort.postMessage()` function and the parent worker writes to the message channel by invoking `worker.postMessage()` function on the worker instance. These threads have their own Event Loop and V8 instance and runs indepedently. Threads lives inside a process, therefore should it die, it will also terminate the threads it holds. This is different from Cluster or Child process, where if one process dies, others can keep executing.
 
 > Note: Workers (threads) are useful for performing CPU-intensive tasks. They are not meant for I/O-intensive work, since Node.js built-in asynchronous I/O operations are more efficient.
 
 ##### Some code..
-Let's borrow the code from the [previous]() article. It's a simple Nodejs/Express server that calculates the Fibonacci of an n'th term with a linear time-complexity algorithm. As n becomes larger, so do the time to calculate the Fibonacci number.
+Let's borrow the code from the [previous](/blog/nodejs-cpu-bound-tasks) article. It's a simple Nodejs/Express server that calculates the Fibonacci of an n'th term with a linear time-complexity algorithm. As n becomes larger, so do the time to calculate the Fibonacci number.
 Let's look at the recursive function:
 
 ```js
