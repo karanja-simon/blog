@@ -26,7 +26,6 @@ And below is simple Nodejs/Express server.
 
 ```js
 import express from 'express';
-import axios from 'axios';
 import { fib } from './fib.js';
 
 const PORT = process.env.PORT || 4001;
