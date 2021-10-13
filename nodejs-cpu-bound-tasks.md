@@ -266,7 +266,13 @@ http://localhost:4002/fib/45
 ```
 And opening another tab on Postman and making another `GET` request on the `/hello` endpoint, we now immediately get a `Hello!` response as the first request keeps calculating. This means our requests are being handled by different *processes*.
 
-As noted above, this approach is not cheap, since processes are not kind to OS resources pool. Node.js team has since introduces a better approach called the Worker Threads from the `worker_threads` module, which allows execution in parallel, and are light-weight. We will look at this on the next article.
+As noted above, this approach is not cheap, since processes are not kind to OS resources pool. Node.js team has since introduces a better approach called the Worker Threads from the `worker_threads` module, which allows execution in parallel, and are light-weight. We will look at this on the [next](/blog/nodejs-worker-threads) article.
+
+#### References
+
+* https://nodejs.org/api/child_process.html
+* https://nodejs.org/api/cluster.html
+* https://yarin.dev/nodejs-cpu-bound-tasks-worker-threads/
 
 *Cheers. Happy coding*
 
