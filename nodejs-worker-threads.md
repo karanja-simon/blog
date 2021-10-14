@@ -1,7 +1,7 @@
 ## Node.js Worker Threads
 ##### *A look at Node.js parallelism with worker threads*
 ###### [@admin](/whoami)
-###### OCT 06, 2021 02:10PM
+###### Oct 06, 2021 02:10PM
 ###### [#nodejs]() [#threads]()
 
 [Previously](/blog/nodejs-cpu-bound-tasks), we looked at offloading CPU-bound task to a Worker Pool by using a [Child Process](https://nodejs.org/api/child_process.html) or a [Cluster](https://nodejs.org/api/cluster.html). In this article, we will look at [Worker Threads](https://nodejs.org/api/worker_threads.html) and why they are more desirable than previous approach.
